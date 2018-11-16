@@ -1,23 +1,42 @@
 CREATE TABLE user (
-  id INTEGER PRIMARY KEY,
-  username VARCHAR NOT NULL,
-  password VARCHAR NOT NULL,
-  karma INTEGER
+  Id INTEGER PRIMARY KEY,
+  Username VARCHAR NOT NULL,
+  Password VARCHAR NOT NULL,
+  Karma INTEGER
 );
-
+ 
 CREATE TABLE story (    
-    id INTEGER PRIMARY KEY,
+    Id INTEGER PRIMARY KEY,
     title VARCHAR NOT NULL,
-    description VARCHAR NOT NULL,
-    date DATETIME NOT NULL,
-    karma INTEGER
+    Description VARCHAR NOT NULL,
+    Date DATETIME NOT NULL,
+    Karma INTEGER
 );
 
 CREATE TABLE comment (    
-    id INTEGER PRIMARY KEY,
-    description VARCHAR NOT NULL,
-    date DATETIME NOT NULL,
-    karma INTEGER
+    Id INTEGER PRIMARY KEY,
+    Description VARCHAR NOT NULL,
+    Date DATETIME NOT NULL,
+    Karma INTEGER
 );
 
+CREATE TABLE channel (    
+    Id INTEGER PRIMARY KEY,
+    Name VARCHAR NOT NULL,
+    Subscriptions INTEGER
+);
+
+CREATE TABLE VoteStory (    
+    Id_user INTEGER REFERENCES user(Id) PRIMARY KEY,
+    Id_story INTEGER REFERENCES story(Id)PRIMARY KEY,
+    UpDown INTEGER,
+    Date DATETIME NOT NULL
+);
+
+CREATE TABLE VoteComment (    
+    Id_user INTEGER REFERENCES user(Id) PRIMARY KEY,
+    Id_story INTEGER REFERENCES story(Id)PRIMARY KEY,
+    UpDown INTEGER,
+    Date DATETIME NOT NULL
+);
 
