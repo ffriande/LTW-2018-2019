@@ -12,7 +12,7 @@
     </div>
 </footer>
 
-<script src="js/homepage.js"></script>
+<script src="js/validation.js"></script>
 
 </body>
 </html>
