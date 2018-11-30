@@ -13,88 +13,88 @@ DROP TRIGGER IF EXISTS create_subscription;
 
 
 CREATE TABLE user (
-  Id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-  Username VARCHAR NOT NULL,
-  Password VARCHAR NOT NULL
+  id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+  username VARCHAR NOT NULL,
+  password VARCHAR NOT NULL
 );
  
 CREATE TABLE story (    
-    Id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-    Channel INTEGER,
-    User INTEGER,
+    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    channel_id INTEGER,
+    user_id INTEGER,
     title VARCHAR NOT NULL,
-    Description VARCHAR NOT NULL,
-    Date DATETIME NOT NULL,
-    Karma INTEGER,
-        FOREIGN KEY (Channel) REFERENCES channel(Id),
-        FOREIGN KEY (User) REFERENCES user(Id)
+    description VARCHAR NOT NULL,
+    date DATETIME NOT NULL,
+    karma INTEGER,
+        FOREIGN KEY (channel_id) REFERENCES channel(id),
+        FOREIGN KEY (user_id) REFERENCES user(id)
 );
 
 CREATE TABLE comment (    
-    Id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-    Story INTEGER,
-    User INTEGER,
-    Description VARCHAR NOT NULL,
-    Date DATETIME NOT NULL,
-    Karma INTEGER,
-        FOREIGN KEY (Story) REFERENCES story(Id),
-        FOREIGN KEY (User) REFERENCES user(Id)
+    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    story_id INTEGER,
+    user_id INTEGER,
+    description VARCHAR NOT NULL,
+    date DATETIME NOT NULL,
+    karma INTEGER,
+        FOREIGN KEY (story_id) REFERENCES story(id),
+        FOREIGN KEY (user_id) REFERENCES user(id)
 );
 
 CREATE TABLE channel (    
-    Id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-    User INTEGER,
-    Name VARCHAR NOT NULL,
-    Subscriptions INTEGER,
-        FOREIGN KEY (User) REFERENCES user(Id)
+    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    user_id INTEGER,
+    name VARCHAR NOT NULL,
+    subscriptions INTEGER,
+        FOREIGN KEY (user_id) REFERENCES user(id)
 );
 
 CREATE TABLE subscription (
-    Id_User INTEGER NOT NULL,
-    Id_Channel INTEGER NOT NULL,
-        PRIMARY KEY (Id_User, Id_Channel),
-        FOREIGN KEY (Id_User) REFERENCES user(Id),
-        FOREIGN KEY (Id_Channel) REFERENCES channel(Id)
+    user_id INTEGER NOT NULL,
+    channel_id INTEGER NOT NULL,
+        PRIMARY KEY (user_id, channel_id),
+        FOREIGN KEY (user_id) REFERENCES user(id),
+        FOREIGN KEY (channel_id) REFERENCES channel(id)
 );
 
 CREATE TABLE voteStory (
-    Id_User INTEGER NOT NULL,
-    Id_Story INTEGER NOT NULL,
-    UpDown INTEGER,
+    user_id INTEGER NOT NULL,
+    story_id INTEGER NOT NULL,
+    up_down INTEGER,
     Date DATETIME NOT NULL,
-        PRIMARY KEY (Id_User, Id_Story),
-        FOREIGN KEY (Id_User) REFERENCES user(Id),
-        FOREIGN KEY (Id_Story) REFERENCES story(Id)
+        PRIMARY KEY (user_id, story_id),
+        FOREIGN KEY (user_id) REFERENCES user(id),
+        FOREIGN KEY (story_id) REFERENCES story(id)
 );
 
 CREATE TABLE voteComment (
-    Id_User INTEGER NOT NULL,
-    Id_Comment INTEGER NOT NULL,
-    UpDown INTEGER,
+    user_id INTEGER NOT NULL,
+    comment_id INTEGER NOT NULL,
+    up_down INTEGER,
     Date DATETIME NOT NULL,
-        PRIMARY KEY (Id_User, Id_Comment),
-        FOREIGN KEY (Id_User) REFERENCES user(Id),
-        FOREIGN KEY (Id_Comment) REFERENCES comment(id)
+        PRIMARY KEY (user_id, comment_id),
+        FOREIGN KEY (user_id) REFERENCES user(id),
+        FOREIGN KEY (comment_id) REFERENCES comment(id)
 );
 
 
 CREATE TRIGGER create_vote_story AFTER INSERT ON voteStory
 BEGIN
-        UPDATE story SET Karma = (SELECT COUNT (*) FROM voteStory)
+        UPDATE story SET karma = (SELECT COUNT (*) FROM voteStory)
     WHERE
-        story.Id = voteStory.Id_story;
+        story.id = voteStory.story_id;
 END;
 
 CREATE TRIGGER create_vote_comment AFTER INSERT ON voteComment
 BEGIN
-        UPDATE story SET Karma  = (SELECT COUNT (*) FROM comment)
+        UPDATE story SET karma  = (SELECT COUNT (*) FROM comment)
     WHERE
-        comment.Id = voteComment.Id_story;
+        comment.id = voteComment.comment_id;
 END;
 
 CREATE TRIGGER create_subscription AFTER INSERT ON subscription
 BEGIN
-        UPDATE channel SET Subscriptions = (SELECT COUNT (*) FROM subscription)
+        UPDATE channel SET subscriptions = (SELECT COUNT (*) FROM subscription)
     WHERE  
-        story.Id = subscription.Id_Story;
+        channel.id = subscription.channel_id;
 END;
