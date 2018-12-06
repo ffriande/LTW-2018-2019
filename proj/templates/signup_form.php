@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="../css/main.css">
 <header>
-        <p>New user?</p>
-        <a class='register' href="../pages/register.php">Sign up</a>
+        <p>Already a user?</p>
+        <a class='log-in' href="../pages/login.php">Log in</a>
 </header>
 
 <nav id="navbar">
@@ -22,14 +22,13 @@
 </div>
 
 <section id="login" >
-    <h2>Log In</h2>
-    <form action="../action_login.php" method="POST">
-        <!-- <label for="username"></label> -->
+    <h2>Register</h2>
+    <form action="../action_register.php" method="POST">
+       
         <input type="text" name="username" placeholder="username or email" id="username" required="required"><span class="pass-check usercheck" aria-hidden="true"></span><i class="pass-times usernotcheck" aria-hidden="true"></i><br>
         <ul class="checkuser">
             <li></li>
         </ul>
-        <!-- <label for="password"></label> -->
         <input type="password" name="password" placeholder="password" id="password" required="required"><span class="pass-check passcheck" aria-hidden="true"></span><i class="pass-times passnotcheck" aria-hidden="true"></i><br>
         <div class="checkpassword">
             <h4>Your password must have:</h4>
@@ -40,7 +39,11 @@
                 <li class="4-rule">At least 1 special character <span class="pass-check" ></span></li>
             </ul>
         </div>
-        <input type="submit" value="Log In">
+             
+        <input type="password" name="passwordconfirm" placeholder="confirm password" id="password"><span class="pass-check confirm passcheck" aria-hidden="true"></span><i class="pass-times confirm passnotcheck" aria-hidden="true"></i><br>
+        <div class="checkpassword">
+        </div>
+        <input type="submit" value="Sign Up">
     </form>
     <p class="<?if(isset($_GET[error_msg])){echo 'error-show';}else{echo 'error-hide';}?>">The <?echo $_GET[error_msg]; ?> entered already exists!<p>
 </section>
