@@ -69,8 +69,9 @@
 
 /*login*/
 #login form input[type=submit]{
-    width: 100%;
+    width: 19em;
     margin-top: 1.0em;
+    margin-left: 1.3em;
     font-size: 1.3em;
     font-weight: bold;
     border: 1px solid #f4f0f5;
@@ -135,4 +136,4 @@
     #app-promo{
         justify-content: center;
     }
-}
+  }

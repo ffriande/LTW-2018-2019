@@ -6,7 +6,7 @@
   $password = $_POST['password'];  
   $passwordconfirm = $_POST['passwordconfirm'];  
 
-  createUser($username, $password, $passwordconfirm);
+  createUser($username, $password,$passwordconfirm);
   
   header('Location: ../proj/pages/login.php');  
 ?>

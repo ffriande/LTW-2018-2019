@@ -1,15 +1,18 @@
 <?php
-  include_once('config/init.php');
-  include_once('database/user.php');
-  
-  $username = trim(strip_tags($_POST['username']));
-  $password = $_POST['password'];  
+	include_once('config/init.php');
+	include_once('database/user.php');
 
-  if (verifyUser($username, $password)) {
-    $_SESSION['username'] = $username;
-    header('Location: ../proj/pages/story.php');
-  }
-  else
-     header('Location: ../pages/story.php');
-  // header('Location: ' . $_SERVER['HTTP_REFERER']);  
+	$username = trim(strip_tags($_POST['username']));
+	$password = trim(strip_tags($_POST['password']));
+
+	if (verifyUser($username, $password)) {
+		
+		$_SESSION['username'] = $username;
+		header('Location: pages/stories.php');
+		
+	} else {
+
+		header('Location: pages/stories.php');
+
+	}
 ?>

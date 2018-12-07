@@ -12,13 +12,6 @@
     </div>
 </footer>
 
-<div>
-    
-    <a href="../pages/login.php">Login</a>
-    <a href="../pages/profile.php">Profile</a>
-    <a href="../pages/register.php">Register</a>
-    <a href="../pages/stories.php">Stories</a>
 
-</div>
 </body>
 </html>
