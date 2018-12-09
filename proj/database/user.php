@@ -27,5 +27,4 @@
     $stmt->execute(array($username, $hash));
   }
 
-
 ?>

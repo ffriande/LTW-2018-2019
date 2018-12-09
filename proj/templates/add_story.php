@@ -1,6 +1,6 @@
 <section id="content">
   <h2>Add Story</h2>
-  <form action="action_add_story.php" method="post">
+  <form action="../actions/action_add_story.php" method="post">
     <label>Name:
       <input type="text" name="name">
     </label>
