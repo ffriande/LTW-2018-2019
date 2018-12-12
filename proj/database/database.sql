@@ -14,19 +14,19 @@ DROP TRIGGER IF EXISTS create_subscription;
 
 CREATE TABLE user (
   id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-  username VARCHAR NOT NULL UNIQUE,
+  username VARCHAR NOT NULL,
   password VARCHAR NOT NULL
 );
  
 CREATE TABLE story (    
     id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-    /*channel_id INTEGER,*/
+    channel_id INTEGER,
     user_id INTEGER,
     title VARCHAR NOT NULL,
     description VARCHAR NOT NULL,
     date DATETIME NOT NULL,
-    karma INTEGER DEFAULT 0,
-        /*FOREIGN KEY (channel_id) REFERENCES channel(id),*/
+    karma INTEGER,
+        FOREIGN KEY (channel_id) REFERENCES channel(id),
         FOREIGN KEY (user_id) REFERENCES user(id)
 );
 
@@ -36,26 +36,26 @@ CREATE TABLE comment (
     user_id INTEGER,
     description VARCHAR NOT NULL,
     date DATETIME NOT NULL,
-    karma INTEGER DEFAULT 0,
+    karma INTEGER,
         FOREIGN KEY (story_id) REFERENCES story(id),
         FOREIGN KEY (user_id) REFERENCES user(id)
 );
 
-/*CREATE TABLE channel (    
+CREATE TABLE channel (    
     id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
     user_id INTEGER,
     name VARCHAR NOT NULL,
-    subscriptions INTEGER DEFAULT 0,
+    subscriptions INTEGER,
         FOREIGN KEY (user_id) REFERENCES user(id)
-);*/
+);
 
-/*CREATE TABLE subscription (
+CREATE TABLE subscription (
     user_id INTEGER NOT NULL,
     channel_id INTEGER NOT NULL,
         PRIMARY KEY (user_id, channel_id),
         FOREIGN KEY (user_id) REFERENCES user(id),
         FOREIGN KEY (channel_id) REFERENCES channel(id)
-);*/
+);
 
 CREATE TABLE voteStory (
     user_id INTEGER NOT NULL,
@@ -92,28 +92,9 @@ BEGIN
         comment.id = voteComment.comment_id;
 END;
 
-/*CREATE TRIGGER create_subscription AFTER INSERT ON subscription
+CREATE TRIGGER create_subscription AFTER INSERT ON subscription
 BEGIN
         UPDATE channel SET subscriptions = (SELECT COUNT (*) FROM subscription)
     WHERE  
         channel.id = subscription.channel_id;
-END;*/
-
-
-INSERT INTO user (username, password) VALUES ('user1', '7C4A8D09CA3762AF61E59520943DC26494F8941B');
-INSERT INTO user (username, password) VALUES ('user2', '7C4A8D09CA3762AF61E59520943DC26494F8941B');
-INSERT INTO user (username, password) VALUES ('user3', '7C4A8D09CA3762AF61E59520943DC26494F8941B');
-INSERT INTO user (username, password) VALUES ('user4', '7C4A8D09CA3762AF61E59520943DC26494F8941B');
-INSERT INTO user (username, password) VALUES ('user5', '7C4A8D09CA3762AF61E59520943DC26494F8941B');
-
-INSERT INTO story (user_id, title, description, date) VALUES (1, 'test1', 'test1', date('now'));
-INSERT INTO story (user_id, title, description, date) VALUES (2, 'test2', 'test2', date('now'));
-INSERT INTO story (user_id, title, description, date) VALUES (3, 'test3', 'test3', date('now'));
-INSERT INTO story (user_id, title, description, date) VALUES (4, 'test4', 'test4', date('now'));
-INSERT INTO story (user_id, title, description, date) VALUES (5, 'test5', 'test5', date('now'));
-
-INSERT INTO comment (story_id, user_id, description, date) VALUES (1, 2, 'test1', date('now'));
-INSERT INTO comment (story_id, user_id, description, date) VALUES (2, 3, 'test1', date('now'));
-INSERT INTO comment (story_id, user_id, description, date) VALUES (3, 4, 'test1', date('now'));
-INSERT INTO comment (story_id, user_id, description, date) VALUES (4, 5, 'test1', date('now'));
-INSERT INTO comment (story_id, user_id, description, date) VALUES (5, 1, 'test1', date('now'));
+END;

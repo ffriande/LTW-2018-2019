@@ -29,7 +29,7 @@
                 <li></li>
             </ul>
             <input type="password" name="password" placeholder="password" id="password" required="required"><br>
-            <input type="password" name="passwordconfirm" placeholder="confirm password" id="passwordConfirm">
+            <input type="password" name="passwordConfirm" placeholder="confirm password" id="passwordConfirm">
             <div class="checkpassword">
             </div>
             <input type="submit" value="Sign Up">

@@ -34,12 +34,12 @@
                 </ul>
             </div>
                  
-            <input type="password" name="passwordconfirm" placeholder="confirm password" id="password">
+            <input type="password" name="passwordConfirm" placeholder="confirm password" id="password">
             <span class="pass-check confirm passcheck" aria-hidden="true"></span><i class="pass-times confirm passnotcheck" aria-hidden="true"></i><br>
             <div class="checkpassword">
             </div>
             <input type="submit" value="Save">
         </form>
-        <p class="<?if(isset($_GET[error_msg])){echo 'error-show';}else{echo 'error-hide';}?>">The <?echo $_GET[error_msg]; ?> entered already exists!<p>
+        <p class="<?php if(isset($_GET['error_msg'])){echo 'error-show';}else{echo 'error-hide';}?>">The <?echo $_GET['error_msg']; ?> entered already exists!<p>
     </section>
 </section>

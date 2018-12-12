@@ -10,11 +10,11 @@
 
 		$_SESSION['username'] = $username;
 
-		header('Location: ../pages/stories.php');
+		die(header('Location: ../pages/stories.php'));
 		
 	} else {
 
-		header('Location: ../pages/login.php');
+		die(header('Location: ../pages/login.php'));
 
 	}
 ?>

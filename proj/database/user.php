@@ -17,14 +17,33 @@
     return ($user !== false && password_verify($password, $user['password']));
   }
 
-  function editUser($username, $password, $user_id) {
-    global $conn;  
-      
+  function editCurrentUser(
+        $username, 
+        $password
+      )
+  {
+    global $conn;
+
     $options = ['cost' => 12];
     $hash = password_hash($password, PASSWORD_DEFAULT, $options);
+    
+    $stmt=$conn->prepare('UPDATE user SET username=?,password=? WHERE username=?');
 
-    $stmt = $conn->prepare('INSERT INTO users VALUES (?, ?)');
-    $stmt->execute(array($username, $hash));
+    $result = $stmt->execute(array($username,$hash,$_SESSION['username']));
+
+    return $result;
+  }
+
+  function getCurrentUser()
+  {
+    global $conn;
+    
+    $access=$conn->prepare('SELECT * FROM user WHERE username=?');
+    $access->execute(array($_SESSION['username']));
+    
+    $currentUser=$access->fetch();
+    
+    return $currentUser;
   }
 
 ?>

@@ -4,8 +4,8 @@
 	include_once('../config/session.php');
 
 	$username = trim(strip_tags($_POST['username']));
-	$password = $_POST['password'];  
-	$passwordConfirm = $_POST['passwordConfirm'];  
+	$password = trim(strip_tags($_POST['password']));
+	$passwordConfirm = trim(strip_tags($_POST['passwordConfirm']));  
 
 		// Don't allow certain characters
 		$fail=0;

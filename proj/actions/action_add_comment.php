@@ -1,13 +1,32 @@
 <?php
 	include_once('../config/init.php');
-	include_once('../database/comment.php');
-	include_once('../database/user.php');
 
-	$comment = trim(strip_tags($_POST['comment']));
-	$story_id = trim(strip_tags($_POST['story_id']));
-	$user_id = trim(strip_tags($_POST['user_id']));
+	if(isset($_SESSION['username'])) {
 
-	createComment($comment,$story_id,$user_id);
+		include_once('../database/comment.php');
+		include_once('../database/user.php');
 
-	header('Location: ../pages/story.php?id='.$story_id);
+		$user = getCurrentUser();
+
+		$story_id = trim(strip_tags($_POST['story']));
+		$user_id = $user['id'];
+		$description = trim(strip_tags($_POST['comment']));
+		$date = date('Y-m-d H:i:s');
+		$karma = 0;
+
+		$comment_id = createComment(
+			$story_id,
+			$user_id,
+			$description,
+			$date,
+			$karma
+		);
+
+		die(header('Location: ../pages/story.php?id='.$story_id));
+	}
+
+	die(header('Location: ../index.php'));
+
+	
 ?>
+

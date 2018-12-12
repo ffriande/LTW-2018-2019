@@ -15,35 +15,39 @@
     </head>
 <body>
 
-    <nav id="navbar">
-        <ul>
-            <?php if(!isset($_SESSION['username'])) { ?>
-              <li>
-                <a class='register' href="../pages/register.php">Sign up</a>
-              </li>
-              <li>
-                <a class='log-in' href="../pages/login.php">Log in</a>
-              </li>
-            <?php } else { ?>
-              <li >
-                <a class='profile-in' href="../pages/profile.php">Profile</a>
-              </li>
-              <li style="float:right">
-                <a class='log-out' href="../actions/action_logout.php">Log out</a>
-              </li>
-              <li style="float:right">
-              <a class='username'>
-              <?php
-                echo $_SESSION['username'];
-              ?>
-              </a>
-              </li>
-            <?php } ?>
-            <li>
-                <a class='stories' href="../pages/stories.php">Stories</a>
+  <nav id="navbar">
+      <ul>
+          <li>
+              <a class='stories' href="../pages/stories.php">Stories</a>
+          </li>
+          <?php if(!isset($_SESSION['username'])) { ?>
+            <li style="float:right">
+              <a class='register' href="../pages/register.php">Sign up</a>
             </li>
-        </ul>
-    </nav>
+            <li style="float:right">
+              <a class='log-in' href="../pages/login.php">Log in</a>
+            </li>
+          <?php } else { ?>
+            
+            <li >
+              <a class='profile-in' href="../pages/add_story.php">Add Story</a>
+            </li>
+            <li style="float:right">
+              <a class='log-out' href="../actions/action_logout.php">Log out</a>
+            </li>
+            <li style="float:right">
+              <a class='profile-in' href="../pages/profile.php">Profile</a>
+            </li>
+            <li style="float:right">
+              <a class='username'>
+                <?php
+                  echo $_SESSION['username'];
+                ?>
+              </a>
+            </li>
+          <?php } ?>
+      </ul>
+  </nav>
 
 
 

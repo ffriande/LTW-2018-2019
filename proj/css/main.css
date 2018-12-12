@@ -148,3 +148,9 @@
         justify-content: center;
     }
 }
+
+/*story.php*/
+/*list_stories.php*/
+.downvote {
+    margin-right: 25px;
+}

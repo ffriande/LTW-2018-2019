@@ -5,6 +5,6 @@
 
 	session_start();
 
-	header('Location: ../pages/login.php');
+	die(header('Location: ../pages/login.php'));
 
 ?>
