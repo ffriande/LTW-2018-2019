@@ -1,3 +1,11 @@
+<?php if (isset($_SESSION['messages'])) {?>
+        <section id="messages">
+        <?php foreach($_SESSION['messages'] as $message) { ?>
+
+            <div class="<?=$message['type']?>">-><?=$message['content']?><br></div>
+        <?php } ?>
+        </section>
+    <?php unset($_SESSION['messages']); } ?>
 <section id="core" >
     <section id="app-promo">
     	<img src="../images/sigarrit_full_logo.png" alt="Logo" width="700" height="380">
@@ -10,20 +18,23 @@
     <div class="wrapper-divider">
         <div class="divider"></div>
     </div>
-
     <section id="login" >
         <h2>Register</h2>
         <form action="../actions/action_register.php" method="POST">
            
-            <input type="text" name="username" placeholder="username or email" id="username" required="required">
-            <span class="pass-check usercheck" aria-hidden="true"></span><i class="pass-times usernotcheck" aria-hidden="true"></i>
+            <input type="text" name="username" placeholder="username" id="username" required="required">
+            
             <br>
             <ul class="checkuser">
                 <li></li>
             </ul>
             <input type="password" name="password" placeholder="password" id="password" required="required"><br>
-            <span class="pass-check passcheck" aria-hidden="true"></span><i class="pass-times passnotcheck" aria-hidden="true"></i>
+            <input type="password" name="passwordconfirm" placeholder="confirm password" id="passwordConfirm">
+            <div class="checkpassword">
+            </div>
+            <input type="submit" value="Sign Up">
             <br>
+
             <div class="checkpassword">
                 <h4>Your password must have:</h4>
                 <ul>
@@ -34,12 +45,7 @@
                 </ul>
             </div>
                  
-            <input type="password" name="passwordconfirm" placeholder="confirm password" id="password">
-            <span class="pass-check confirm passcheck" aria-hidden="true"></span><i class="pass-times confirm passnotcheck" aria-hidden="true"></i><br>
-            <div class="checkpassword">
-            </div>
-            <input type="submit" value="Sign Up">
+
         </form>
-        <p class="<?if(isset($_GET[error_msg])){echo 'error-show';}else{echo 'error-hide';}?>">The <?echo $_GET[error_msg]; ?> entered already exists!<p>
-    </section>
+        </section>
 </section>

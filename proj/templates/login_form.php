@@ -16,7 +16,7 @@
         <h2>Log In</h2>
         <form action="../actions/action_login.php" method="POST">
             <!-- <label for="username"></label> -->
-            <input type="text" name="username" placeholder="username or email" id="username" required="required"><span class="pass-check usercheck" aria-hidden="true"></span><i class="pass-times usernotcheck" aria-hidden="true"></i><br>
+            <input type="text" name="username" placeholder="username" id="username" required="required"><span class="pass-check usercheck" aria-hidden="true"></span><i class="pass-times usernotcheck" aria-hidden="true"></i><br>
             <ul class="checkuser">
                 <li></li>
             </ul>

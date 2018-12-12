@@ -15,7 +15,7 @@
         <h2>Profile</h2>
         <form action="../actions/action_edit_profile.php" method="POST">
            
-            <input type="text" name="username" placeholder="username or email" id="username" value="<?php echo $user['username']; ?>" required="required">
+            <input type="text" name="username" placeholder="username" id="username" value="<?php echo $_SESSION['username']; ?>" required="required">
             <span class="pass-check usercheck" aria-hidden="true"></span><i class="pass-times usernotcheck" aria-hidden="true"></i>
             <br>
             <ul class="checkuser">
