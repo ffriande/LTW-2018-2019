@@ -1,8 +1,25 @@
 <?php
-	function getAllStories() {
+	function getAllStories($sort) {
 		global $conn;
-
-		$stmt = $conn->prepare('SELECT * FROM story ORDER BY `karma` DESC');
+		switch($sort){
+			case "mostK":
+				$stmt = $conn->prepare("SELECT * FROM story ORDER BY `karma` DESC");
+				break;
+			case "leastK":
+				$stmt = $conn->prepare("SELECT * FROM story ORDER BY `karma` ASC");
+				break;
+			case "recent":
+				$stmt = $conn->prepare("SELECT * FROM story ORDER BY `date` DESC");
+				break;
+			case "oldest":	
+				$stmt = $conn->prepare("SELECT * FROM story ORDER BY `date` ASC");
+				break;
+			case "mostComments":	
+				$stmt = $conn->prepare("SELECT * FROM story");
+				//SELECT COUNT(comment.story_id) FROM story left join comment on (story.id=comment.story_id group by comment.story_id
+				break;
+		}
+		
 		$stmt->execute();
 		return $stmt->fetchAll();
 	}

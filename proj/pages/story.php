@@ -11,6 +11,6 @@
 
 	include_once('../templates/header.php');
 
-	include_once('../templates/story.php');
+	include_once('../templates/template_story.php');
 	include_once('../templates/footer.php');
 ?>

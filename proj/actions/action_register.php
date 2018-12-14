@@ -3,7 +3,7 @@
 	include_once('../database/user.php');
 	include_once('../config/session.php');
 
-	$username = trim(strip_tags($_POST['username']));
+	$username = trim(strip_tags($_POST['username'])); //mudar isto poe causa de checkar se tem caracteres especiais
 	$password = trim(strip_tags($_POST['password']));
 	$passwordConfirm = trim(strip_tags($_POST['passwordConfirm']));  
 

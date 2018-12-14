@@ -5,7 +5,6 @@
 
   include_once('../database/story.php');
 
-  $stories = getAllStories();
 
   include_once('../templates/list_stories.php');
 
