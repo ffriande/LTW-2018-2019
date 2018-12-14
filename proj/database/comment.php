@@ -52,7 +52,7 @@
 
     $stmt = $conn->prepare('INSERT INTO voteComment (`user_id`, `comment_id`, `up_down`, `date`) VALUES  ( ?, ?, ?, ?)');
     
-    $stmt->execute(array($user_id, $comment_id, 0, $date));
+    $stmt->execute(array($user_id, $comment_id, -1, $date));
 
     return $conn->lastInsertId();
   }

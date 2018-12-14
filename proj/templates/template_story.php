@@ -74,10 +74,10 @@
         <header>
           <h3>
             <span>
-              <?php echo $story['karma']; ?>
+              <?php echo $comment['karma']; ?>
             </span>
-            <a style="float: right;" href="../actions/action_comment_upvote.php?id=<?php echo $comment['id']; ?>" class="upvote">&uparrow;</a>
-            <a style="float: right;" href="../actions/action_comment_downvote.php?id=<?php echo $comment['id']; ?>" class="downvote">&downarrow;</a>
+            <a style="float: right;" href="../actions/action_comment_upvote.php?id=<?php echo $comment['id']; ?>&story_id=<?php echo $story['id']; ?>" class="upvote">&uparrow;</a>
+            <a style="float: right;" href="../actions/action_comment_downvote.php?id=<?php echo $comment['id']; ?>&story_id=<?php echo $story['id']; ?>" class="downvote">&downarrow;</a>
           </h3>
         </header>
 

@@ -33,6 +33,6 @@
             </div>
             <input type="submit" value="Log In">
         </form>
-        <p class="<?php if(isset($_GET['error_msg'])){echo 'error-show';}else{echo 'error-hide';}?>">The <?echo $_GET[error_msg]; ?> entered already exists!<p>
+        <p class="<?php if(isset($_GET['error_msg'])){echo 'error-show';}else{echo 'error-hide';}?>">The <?echo $_GET['error_msg']; ?> entered already exists!<p>
     </section>
 </section>

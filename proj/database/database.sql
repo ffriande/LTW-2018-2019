@@ -80,21 +80,21 @@ CREATE TABLE voteComment (
 
 CREATE TRIGGER create_vote_story AFTER INSERT ON voteStory
 BEGIN
-        UPDATE story SET karma = (SELECT COUNT (*) FROM voteStory)
+        UPDATE story SET karma = (SELECT SUM(up_down) FROM voteStory WHERE story_id = NEW.story_id)
     WHERE
-        story.id = voteStory.story_id;
+        id = NEW.story_id;
 END;
 
 CREATE TRIGGER create_vote_comment AFTER INSERT ON voteComment
 BEGIN
-        UPDATE story SET karma  = (SELECT COUNT (*) FROM comment)
+        UPDATE comment SET karma  = (SELECT SUM(up_down) FROM voteComment WHERE comment_id = NEW.comment_id)
     WHERE
-        comment.id = voteComment.comment_id;
+        id = NEW.comment_id;
 END;
 
 CREATE TRIGGER create_subscription AFTER INSERT ON subscription
 BEGIN
         UPDATE channel SET subscriptions = (SELECT COUNT (*) FROM subscription)
     WHERE  
-        channel.id = subscription.channel_id;
+        channel_id = NEW.channel_id;
 END;

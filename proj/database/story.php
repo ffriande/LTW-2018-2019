@@ -73,7 +73,7 @@
 
 		$stmt = $conn->prepare('INSERT INTO voteStory (`user_id`, `story_id`, `up_down`, `date`) VALUES  ( ?, ?, ?, ?)');
 		
-		$stmt->execute(array($user_id, $story_id, 0, $date));
+		$stmt->execute(array($user_id, $story_id, -1, $date));
 
 		return $conn->lastInsertId();
 	}
