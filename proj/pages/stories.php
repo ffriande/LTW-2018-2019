@@ -8,9 +8,9 @@
 	if(isset($_GET['sort']))
 		$stories = getAllStories($_GET['sort']);
 	else
-		$stories = getAllStories("mostK");
+		$stories = getAllStories("recent");
 
 	include_once('../templates/list_stories.php');
-
+	draw_stories($stories);
 	include_once('../templates/footer.php');
 ?>

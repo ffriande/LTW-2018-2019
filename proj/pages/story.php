@@ -8,7 +8,6 @@
 
 	$story = getStory($story_id);
 	$comments = getAllComments($story_id);
-	$user = 
 
 	include_once('../templates/header.php');
 

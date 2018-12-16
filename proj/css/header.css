@@ -34,3 +34,8 @@
     /* background-color: #ff3300; */
   }
   
+  
+  @media (max-width: 980px) {
+    ul {
+      width:fit-content;
+    }}

@@ -46,4 +46,22 @@
     return $currentUser;
   }
 
+  function getUserStories($username){
+      global $conn;
+  
+      $stmt = $conn->prepare('SELECT * FROM story WHERE `user_id`=(SELECT id FROM user WHERE username=?)');
+      $stmt->execute(array($username));
+      return $stmt->fetch();
+    
+  }
+
+  function getUserComments($user_id){
+    global $conn;
+
+    $stmt = $conn->prepare('SELECT * FROM comment WHERE `user_id` =(SELECT id from user where username=?)');
+    $stmt->execute(array($user_id));
+    return $stmt->fetch();
+  
+}
+
 ?>

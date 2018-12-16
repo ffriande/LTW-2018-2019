@@ -1,11 +1,11 @@
+
 <section id="stories">
 
-	<div class="choose-sort">
-		<form action="../actions/action_sort.php" method="POST">
+	<form action="../actions/action_sort.php" method="POST">
 
-			<div class="form-group">
+		<div class="form-group">
 		        
-		        <label for="sort">Sort stories by: </label>
+		        <label for="sorting">Sort stories by: </label>
 		        <select id="sorting" name="sort">
 		            <option value="recent">Most Recent</option>
 		            <option value="oldest">Oldest</option>
@@ -14,17 +14,13 @@
 		            <option value="mostComments">Most Commented</option>
 		            <option value="leastComments">Least Commented</option>
 		        </select>
-				
-			</div>
-
+				</div>
 			<div class="form-group">
-				
 				<input type="submit" name="submit" value="submit">
-
 			</div>
 		</form>
-    </div>
-
+    </div>			
+	<?php function draw_stories($stories){?>
 	<?php foreach ($stories as $key => $story) { ?>
 
 		<article>
@@ -55,9 +51,9 @@
 					<?php echo $story['date']; ?>
 				</span>
 				
-				<a class="comments" href="../pages/story.php?id=<?php echo $story['id']; ?>">comment</a>
+				<a class="comments" href="../pages/story.php?id=<?php echo $story['id']; ?>"><?php echo $story['nrComm']; ?> comments</a>
 			</footer>
 		</article>
-
+		<?php } ?>
 	<?php } ?>
 </section>

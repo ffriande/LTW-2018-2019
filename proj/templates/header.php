@@ -12,6 +12,7 @@
 		    <link rel="stylesheet" href="../css/allpages.css">
         <link rel="stylesheet" href="../css/main.css">
         <link rel="stylesheet" href="../css/header.css">
+        <script src="../js/script.js" defer></script>
     </head>
 <body>
 
@@ -36,7 +37,7 @@
               <a class='log-out' href="../actions/action_logout.php">Log out</a>
             </li>
             <li style="float:right">
-              <a class='profile-in' href="../pages/profile.php">Profile</a>
+              <a class='profile-in' href="../pages/profile.php?profile=<?php echo $_SESSION['username']; ?>">Profile</a>
             </li>
             <li style="float:right">
               <a class='username'>
@@ -48,6 +49,7 @@
           <?php } ?>
       </ul>
   </nav>
+
 
 
 

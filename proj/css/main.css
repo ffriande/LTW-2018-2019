@@ -138,6 +138,9 @@
 @media (max-width: 980px) {
     #core { 
         flex-direction: column-reverse;
+        width:fit-content;
+        align-items: center;
+
     }
     #login{
         

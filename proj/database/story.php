@@ -3,20 +3,22 @@
 		global $conn;
 		switch($sort){
 			case "mostK":
-				$stmt = $conn->prepare("SELECT * FROM story ORDER BY `karma` DESC");
+				$stmt = $conn->prepare("SELECT story.*, COUNT(comment.story_id) as nrComm FROM story left join comment where story.id=comment.story_id group by comment.story_id ORDER BY `karma` DESC");
 				break;
 			case "leastK":
-				$stmt = $conn->prepare("SELECT * FROM story ORDER BY `karma` ASC");
+				$stmt = $conn->prepare("SELECT story.*, COUNT(comment.story_id) as nrComm FROM story left join comment where story.id=comment.story_id group by comment.story_id ORDER BY `karma` ASC");
 				break;
 			case "recent":
-				$stmt = $conn->prepare("SELECT * FROM story ORDER BY `date` DESC");
+				$stmt = $conn->prepare("SELECT story.*, COUNT(comment.story_id) as nrComm FROM story left join comment where story.id=comment.story_id group by comment.story_id ORDER BY `date` DESC");
 				break;
 			case "oldest":	
-				$stmt = $conn->prepare("SELECT * FROM story ORDER BY `date` ASC");
+				$stmt = $conn->prepare("SELECT story.*, COUNT(comment.story_id) as nrComm FROM story left join comment where story.id=comment.story_id group by comment.story_id ORDER BY `date` ASC");
 				break;
 			case "mostComments":	
-				$stmt = $conn->prepare("SELECT * FROM story");
-				//SELECT COUNT(comment.story_id) FROM story left join comment on (story.id=comment.story_id group by comment.story_id
+				$stmt = $conn->prepare("SELECT story.*, COUNT(comment.story_id) as nrComm FROM story left join comment where story.id=comment.story_id group by comment.story_id ORDER BY comment.story_id ASC");
+				break;
+			case "leastComments":	
+				$stmt = $conn->prepare("SELECT story.*, COUNT(comment.story_id) as nrComm FROM story left join comment where story.id=comment.story_id group by comment.story_id ORDER BY comment.story_id DESC");
 				break;
 		}
 		
