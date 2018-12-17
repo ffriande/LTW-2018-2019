@@ -20,7 +20,6 @@
 			</div>
 		</form>
     </div>			
-	<?php function draw_stories($stories){?>
 	<?php foreach ($stories as $key => $story) { ?>
 
 		<article>
@@ -55,5 +54,4 @@
 			</footer>
 		</article>
 		<?php } ?>
-	<?php } ?>
 </section>
