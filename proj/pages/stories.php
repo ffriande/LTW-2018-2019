@@ -5,9 +5,12 @@
 
 	include_once('../database/story.php');
 
-	if(isset($_GET['sort']))
+	if(isset($_GET['sort'])) {
+
 		$stories = getAllStories($_GET['sort']);
-	else
+		$sort = $_GET['sort'];
+		
+	} else
 		$stories = getAllStories("recent");
 
 	include_once('../templates/list_stories.php');

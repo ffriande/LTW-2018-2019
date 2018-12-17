@@ -7,12 +7,12 @@
 		        
 		        <label for="sorting">Sort stories by: </label>
 		        <select id="sorting" name="sort">
-		            <option value="recent">Most Recent</option>
-		            <option value="oldest">Oldest</option>
-		            <option value="mostK">Most Karma</option>
-		            <option value="leastK">Least Karma</option>
-		            <option value="mostComments">Most Commented</option>
-		            <option value="leastComments">Least Commented</option>
+		            <option value="recent" <?php echo ( isset($sort) && $sort == 'recent' ? 'selected' : ''); ?>>Most Recent</option>
+		            <option value="oldest" <?php echo ( isset($sort) && $sort == 'oldest' ? 'selected' : ''); ?>>Oldest</option>
+		            <option value="mostK" <?php echo ( isset($sort) && $sort == 'mostK' ? 'selected' : ''); ?>>Most Karma</option>
+		            <option value="leastK" <?php echo ( isset($sort) && $sort == 'leastK' ? 'selected' : ''); ?>>Least Karma</option>
+		            <option value="mostComments" <?php echo ( isset($sort) && $sort == 'mostComments' ? 'selected' : ''); ?>>Most Commented</option>
+		            <option value="leastComments" <?php echo ( isset($sort) && $sort == 'leastComments' ? 'selected' : ''); ?>>Least Commented</option>
 		        </select>
 				</div>
 			<div class="form-group">
