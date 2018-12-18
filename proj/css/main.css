@@ -157,3 +157,8 @@
 .downvote {
     margin-right: 25px;
 }
+
+#profile-stories{
+    display: flex;
+    flex-direction: column;
+}
