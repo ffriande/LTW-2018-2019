@@ -20,35 +20,49 @@
 	<?php foreach ($stories as $key => $story) { ?>
 
 		<article id = 'story'>
-			<header>
-				<h1>
-					<a href="../pages/story.php?id=<?php echo $story['id']; ?>">
-						<?php echo $story['karma']; ?> - <?php echo $story['title']; ?>
-					</a>
-					<a class="arrow-up" href="../actions/action_story_upvote.php?id=<?php echo $story['id']; ?>" class="upvote"></a>
-					<a class="arrow-down" href="../actions/action_story_downvote.php?id=<?php echo $story['id']; ?>" class="downvote"></a>
-				</h1>
-			</header>
 
-			<div class="description">
-				<?php echo $story['description']; ?>
+			<div id = 'vote'>
+				
+				<a href="../actions/action_story_upvote.php?id=<?php echo $story['id']; ?>" class="upvote">
+					<div class="arrow-up"></div>
+				</a>
+			
+				<div id = 'karma'>
+					<?php echo $story['karma']; ?>
+				</div>
+				
+				<a href="../actions/action_story_downvote.php?id=<?php echo $story['id']; ?>" class="downvote">
+					<div class="arrow-down"></div>
+				</a>
+			
 			</div>
+			<div id = 'listStory'>
+				<div class = 'listStory-title'>
+						<a href="../pages/story.php?id=<?php echo $story['id']; ?>">
+							<?php echo $story['title']; ?>
+						</a>
+				</div>
 
-			<footer>
-				<a class="author" href="../pages/profile.php?profile=<?php echo $story['usrname']; ?>"><?php echo $story['usrname']; ?></a>
-				
-				<span class="tags">
-					<a href="../pages/channel.php?id=<?php echo $story['channel_id']; ?>">
-						<?php echo $story['channel_id']; ?>
-					</a>
-				</span>
-				
-				<span class="date">
-					<?php echo $story['date']; ?>
-				</span>
-				
-				<a class="comments" href="../pages/story.php?id=<?php echo $story['id']; ?>"><?php echo $story['nrComm']; ?> comments</a>
-			</footer>
+				<div class="listStory-description">
+					<?php echo $story['description']; ?>
+				</div>
+
+				<div class = 'listStory-footer'>
+					<a class="author" href="../pages/profile.php?profile=<?php echo $story['usrname']; ?>"><?php echo $story['usrname']; ?></a>
+					
+					<span class="tags">
+						<a href="../pages/channel.php?id=<?php echo $story['channel_id']; ?>">
+							<?php echo $story['channel_id']; ?>
+						</a>
+					</span>
+					
+					<span class="date">
+						<?php echo $story['date']; ?>
+					</span>
+					
+					<a class="comments" href="../pages/story.php?id=<?php echo $story['id']; ?>"><?php echo $story['nrComm']; ?> comments</a>
+				</footer>
+			</div>
 		</article>
 		<?php } ?>
 </section>

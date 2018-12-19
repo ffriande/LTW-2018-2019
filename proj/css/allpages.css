@@ -33,6 +33,7 @@ body{
     font-family: 'Montserrat', sans-serif;
     -webkit-font-smoothing: antialiased; 
     color: #000000;
+    box-shadow: 0px 30px 40px rgba(0,0,0,.1);
 }
 
 /*all pages*/
@@ -68,12 +69,15 @@ footer{
     flex-direction: row;
     align-items: baseline;
     justify-content: space-between;
+    color: white; 
+    background-color: #A52A2A;
 }
 
 /*all pages*/
 footer p{
     font-family: 'Montserrat Light', sans-serif;
     font-size: 1.1em;
+    padding: 1em;
 }
 
 /*all pages*/

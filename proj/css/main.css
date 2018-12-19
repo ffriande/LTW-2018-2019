@@ -153,16 +153,21 @@
 }
 
 /*story.php*/
-/*list_stories.php*/
+/*////////////////
+/list_stories.php/
+////////////////*/
+#sorting {
+    border : 1px solid black;
+    border-radius: 5px;
+    padding: 0.5px;
+    background-color: #F5F5F5;
+}
 
 #stories {
     display: block;
     padding: 1em;
 }
 
-.downvote {
-    margin-right: 25px;
-}
 
 #sort {
     margin-top: 25px;
@@ -174,28 +179,99 @@
     padding: 0.5em;
 }
 
+#story {
+    display:flex;
+    align-items: center;
+}
+
+#vote {
+    display: block;
+    text-align: center;
+}
+
 .arrow-up {
-    width: 0; 
-    height: 0; 
-    border-left: 20px solid transparent;
-    border-right: 20px solid transparent;
-    
-    border-bottom: 20px solid black;
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    color: #666;
+    box-sizing: border-box;
+    width: 18px;
+    height: 20px;
+    border-width: 4px 4px 0 0;
+    border-style: solid;
+    margin: 10px;
+    border-radius: 0 2px 0 0;
+    transform: rotate(-45deg);
+}
+
+.arrow-up:hover  {
+    color: green;
 }
 
 .arrow-down {
-    width: 0; 
-    height: 0; 
-    border-left: 20px solid transparent;
-    border-right: 20px solid transparent;
-    
-    border-top: 20px solid black;
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    color: #666;
+    box-sizing: border-box;
+    width: 18px;
+    height: 20px;
+    border-width: 4px 4px 0 0;
+    border-style: solid;
+    margin: 10px;
+    border-radius: 0 2px 0 0;
+    transform: rotate(135deg);
 }
 
-#story > header > h1 {
-    font-size: 30px;
-    font-weight: normal;
+.arrow-down:hover {
+    color: red;
 }
+
+#story{
+    padding-bottom: 10px;
+    border-bottom: 1px dashed gray;
+}
+
+.listStory-title {
+    padding: 0em 1em 1em 1em;
+}
+
+.listStory-title > * {
+    text-decoration: none;
+    font-size: 24px;
+}
+
+.listStory-description {
+    padding: 0em 1em 1em 1em;
+}
+
+.listStory-footer{
+    padding: 0rem 1rem 0rem 1rem;
+    font-size: 12px;
+}
+
+.listStory-footer > * {
+    margin-right: 1em;
+    padding: 0.5em;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+    text-decoration-line: none;
+    text-decoration-color: blue;
+    border-radius: 5px;
+}
+
+.listStory-footer > .author:hover{
+    background-color: #F5F5F5;
+}
+
+.listStory-footer > .comments:hover{
+    background-color: #F5F5F5;
+}
+
+/*//////////////////////////////////////////////////*/
+
+/* profile */
   
 #profile-stories{
     display: flex;
