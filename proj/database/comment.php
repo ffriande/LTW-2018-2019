@@ -4,7 +4,7 @@
   function getAllComments($story_id) {
     global $conn;
     
-    $stmt = $conn->prepare('SELECT * FROM comment WHERE story_id = ? ORDER BY karma');
+    $stmt = $conn->prepare('SELECT * FROM comment WHERE story_id = ? ORDER BY `date` Desc');
     $stmt->execute(array($story_id));
     return $stmt->fetchAll();
   }

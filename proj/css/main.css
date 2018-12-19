@@ -197,3 +197,7 @@
     font-weight: normal;
 }
   
+#profile-stories{
+    display: flex;
+    flex-direction: column;
+}

@@ -1,12 +1,12 @@
 <?php
-  function createUser($username, $password, $passwordconfirm) {
+  function createUser($username, $password, $passwordconfirm, $date) {
     global $conn;  
       
     $options = ['cost' => 12];
     $hash = password_hash($password, PASSWORD_DEFAULT, $options);
 
-    $stmt = $conn->prepare('INSERT INTO user VALUES (NULL,?, ?)');
-    $stmt->execute(array($username, $hash));
+    $stmt = $conn->prepare('INSERT INTO user VALUES (NULL,?,?,?)');
+    $stmt->execute(array($username,$date, $hash));
   }
 
   function verifyUser($username, $password) {
@@ -46,22 +46,6 @@
     return $currentUser;
   }
 
-  function getUserStories($username){
-      global $conn;
-  
-      $stmt = $conn->prepare('SELECT * FROM story WHERE `user_id`=(SELECT id FROM user WHERE username=?)');
-      $stmt->execute(array($username));
-      return $stmt->fetch();
-    
-  }
 
-  function getUserComments($user_id){
-    global $conn;
-
-    $stmt = $conn->prepare('SELECT * FROM comment WHERE `user_id` =(SELECT id from user where username=?)');
-    $stmt->execute(array($user_id));
-    return $stmt->fetch();
-  
-}
 
 ?>

@@ -15,9 +15,6 @@
 		            <option value="leastComments" <?php echo ( isset($sort) && $sort == 'leastComments' ? 'selected' : ''); ?>>Least Commented</option>
 		        </select>
 				</div>
-			<div class="form-group">
-				<input type="submit" name="submit" value="submit">
-			</div>
 		</form>
     </div>			
 	<?php foreach ($stories as $key => $story) { ?>
@@ -38,7 +35,7 @@
 			</div>
 
 			<footer>
-				<span class="author"><?php echo $story['user_id']; ?></span>
+				<a class="author" href="../pages/profile.php?profile=<?php echo $story['usrname']; ?>"><?php echo $story['usrname']; ?></a>
 				
 				<span class="tags">
 					<a href="../pages/channel.php?id=<?php echo $story['channel_id']; ?>">

@@ -25,7 +25,8 @@
 			die(header('Location: ../pages/register.php'));
 			
 		try {
-			createUser($username, $password, $passwordConfirm);
+			$date = date('Y-m-d H:i:s');
+			createUser($username, $password, $passwordConfirm, $date);
 			die(header('Location: ../pages/login.php'));  
 		} catch (PDOException $e) {
 			die($e->getMessage());
