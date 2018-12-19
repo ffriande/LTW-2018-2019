@@ -1,7 +1,7 @@
 
 <section id="stories">
 
-	<form action="../actions/action_sort.php" method="POST">
+	<form action="../actions/action_sort.php" method="POST" id='sort'>
 
 		<div class="form-group">
 		        
@@ -22,14 +22,14 @@
     </div>			
 	<?php foreach ($stories as $key => $story) { ?>
 
-		<article>
+		<article id = 'story'>
 			<header>
 				<h1>
 					<a href="../pages/story.php?id=<?php echo $story['id']; ?>">
 						<?php echo $story['karma']; ?> - <?php echo $story['title']; ?>
 					</a>
-					<a style="float: right;" href="../actions/action_story_upvote.php?id=<?php echo $story['id']; ?>" class="upvote">&uparrow;</a>
-					<a style="float: right;" href="../actions/action_story_downvote.php?id=<?php echo $story['id']; ?>" class="downvote">&downarrow;</a>
+					<a class="arrow-up" href="../actions/action_story_upvote.php?id=<?php echo $story['id']; ?>" class="upvote"></a>
+					<a class="arrow-down" href="../actions/action_story_downvote.php?id=<?php echo $story['id']; ?>" class="downvote"></a>
 				</h1>
 			</header>
 

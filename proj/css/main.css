@@ -154,6 +154,46 @@
 
 /*story.php*/
 /*list_stories.php*/
+
+#stories {
+    display: block;
+    padding: 1em;
+}
+
 .downvote {
     margin-right: 25px;
 }
+
+#sort {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    text-align: right;
+}
+
+#sort > * {
+    padding: 0.5em;
+}
+
+.arrow-up {
+    width: 0; 
+    height: 0; 
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    
+    border-bottom: 20px solid black;
+}
+
+.arrow-down {
+    width: 0; 
+    height: 0; 
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    
+    border-top: 20px solid black;
+}
+
+#story > header > h1 {
+    font-size: 30px;
+    font-weight: normal;
+}
+  
