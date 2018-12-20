@@ -61,7 +61,7 @@
 					</span>
 					
 					<a class="comments" href="../pages/story.php?id=<?php echo $story['id']; ?>"><?php echo $story['nrComm']; ?> comments</a>
-				</footer>
+				</div>
 			</div>
 		</article>
 		<?php } ?>

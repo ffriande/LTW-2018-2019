@@ -151,12 +151,68 @@
         justify-content: center;
     }
 }
+/*//////////
+/*story.php/
+//////////*/
 
-/*story.php*/
+.story-page{
+    padding: 5em 2em;
+}
+
+#story-content {
+    display: block;
+}
+
+#story-header{
+    display:flex;
+}
+
+.story-title {
+    font-weight: bold;
+    font-size: 30px;
+    margin: 1rem;
+}
+
+#story-header > #listStory > .listStory-description {
+    margin-top : 1em;
+}
+
+#listStory {
+    width: 100%;
+}
+
+#add-comment {
+    margin: 1rem;
+}
+
+#add-comment > form > .form-group > label {
+    display: block;
+    margin: 0.1rem;
+}
+
+#comment {
+    margin: 0.1rem;
+    width: 50%;
+}
+
+input[type="submit"] {
+    background-color: #A52A2A;
+    color: white;
+    border: 1px solid black;
+    padding: 0.5em 2em;
+}
+
+#comments{
+    margin-top: 1em;
+    border-top: 1px dashed #666;
+}
+
+
+
 /*////////////////
 /list_stories.php/
 ////////////////*/
-#sorting {
+select {
     border : 1px solid black;
     border-radius: 5px;
     padding: 0.5px;
@@ -182,6 +238,9 @@
 #story {
     display:flex;
     align-items: center;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed gray;
+    margin-top: 1em;
 }
 
 #vote {
@@ -227,11 +286,6 @@
     color: red;
 }
 
-#story{
-    padding-bottom: 10px;
-    border-bottom: 1px dashed gray;
-}
-
 .listStory-title {
     padding: 0em 1em 1em 1em;
 }
@@ -242,7 +296,12 @@
 }
 
 .listStory-description {
-    padding: 0em 1em 1em 1em;
+    margin: 0em 1em 1em 1em;
+    border-radius: 5px;
+    background-color: #F5F5F5;
+    text-align: justify;
+    width: 90%;
+    padding: 1rem;
 }
 
 .listStory-footer{
