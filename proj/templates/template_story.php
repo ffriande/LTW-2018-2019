@@ -22,16 +22,7 @@
         </a>
         
         <div id = 'karma'>
-        <?php 
-
-          if(is_null($story['karma'])){
-            echo '0';
-          }
-          else {
-            echo $story['karma'];
-          }
-        ?>
-          
+          <?php echo $story['karma']; ?>
         </div>
         
         <a href="#story-holder-<?php echo $story['id'] ?>" onclick="downvoteStory('<?php echo $story["id"] ?>')" class="vote downvote <?php echo ( isset($currentUser) && hasUserAlreadyDownvotedStory($currentUser['id'], $story['id']) ? 'voted' : '' ) ?>">
@@ -97,14 +88,7 @@
           </a>
           
           <div id = 'karma'>
-
-            <?php
-              if (is_null($comment['karma'])){
-                echo '0';
-              } 
-              else {
-                echo $comment['karma']; 
-              }?>
+            <?php echo $comment['karma']; ?>
           </div>
           
           <a href="#comment-holder-<?php echo $comment['id'] ?>" onclick="downvoteComment('<?php echo $comment["id"] ?>')" class="vote downvote <?php echo ( isset($currentUser) && hasUserAlreadyDownvotedComment($currentUser['id'], $comment['id']) ? 'voted' : '' ) ?>">
@@ -119,6 +103,7 @@
 
           <div class="listStory-footer">
             <span class="author"><?php echo $comment['user_id']; ?></span>
+
             
             <span class="tags">
               <a href="../pages/channel.php?id=<?php echo $story['channel_id']; ?>">
@@ -129,6 +114,58 @@
             <span class="date">
               <?php echo $comment['date']; ?>
             </span>
+
+            <span class="reply">
+            <form action="../actions/action_add_comment.php" method="post">
+              <label>Comment:
+                <input type="text" name="comment" >
+              </label>
+              <input type="hidden" name="father" value="<?php echo $comment['id'] ?>">
+              <input type="submit">
+            </form>
+          </span>
+          <?php $replies = findReplies($comment['id']);?>
+          <?php foreach ($replies as $key => $reply) { ?>
+            <article id="comment-holder-<?php echo $comment['id'] ?>" class="story">
+        <div id = 'vote'>
+          <a href="#comment-holder-<?php echo $comment['id'] ?>" onclick="upvoteComment('<?php echo $comment["id"] ?>')" class="vote upvote <?php echo ( isset($currentUser) && hasUserAlreadyUpvotedComment($currentUser['id'], $comment['id']) ? 'voted' : '' ) ?>">
+            <div class="arrow-up"></div>
+          </a>
+          
+          <div id = 'karma'>
+            <?php echo $comment['karma']; ?>
+          </div>
+          
+          <a href="#comment-holder-<?php echo $comment['id'] ?>" onclick="downvoteComment('<?php echo $comment["id"] ?>')" class="vote downvote <?php echo ( isset($currentUser) && hasUserAlreadyDownvotedComment($currentUser['id'], $comment['id']) ? 'voted' : '' ) ?>">
+            <div class="arrow-down"></div>
+          </a>
+        </div>
+
+        <div id = 'listStory'>
+          <div class="description listStory-description">
+            <?php echo $comment['description']; ?>
+          </div>
+
+          <div class="listStory-footer">
+            <span class="author"><?php echo $comment['user_id']; ?></span>
+
+            
+            <span class="tags">
+              <a href="../pages/channel.php?id=<?php echo $story['channel_id']; ?>">
+                <?php echo $story['channel_id']; ?>
+              </a>
+            </span>
+            
+            <span class="date">
+              <?php echo $comment['date']; ?>
+            </span>
+
+            </div>
+        </div>
+      </article>
+
+    <?php } ?>
+
           </div>
         </div>
       </article>

@@ -27,6 +27,24 @@
     return $conn->lastInsertId();
   }
 
+  function createReply(
+    $story_id,
+    $user_id,
+    $description,
+    $date,
+    $karma,
+    $father
+  ) {
+
+    global $conn;
+
+    $stmt = $conn->prepare('INSERT INTO comment (`story_id`, `user_id`, `description`, `date`, `karma`,`father`) VALUES  ( ?, ?, ?, ?, ?,?)');
+    
+    $stmt->execute(array($story_id, $user_id, $description, $date, $karma,$father));
+
+    return $conn->lastInsertId();
+  }
+
   function upvoteComment(
     $user_id,
     $comment_id,
@@ -81,6 +99,14 @@
 
     $stmt = $conn->prepare('SELECT * FROM voteComment WHERE user_id = ? AND comment_id = ? AND up_down = 1');
     $stmt->execute(array($user_id, $comment_id));
+    return $stmt->fetchAll();
+  }
+
+  function findReplies($father){
+    global $conn;
+    
+    $stmt = $conn->prepare('SELECT * FROM comment WHERE father = ? ORDER BY `date` Desc');
+    $stmt->execute(array($father));
     return $stmt->fetchAll();
   }
 ?>

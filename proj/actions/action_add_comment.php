@@ -13,15 +13,23 @@
 		$description = trim(strip_tags($_POST['comment']));
 		$date = date('Y-m-d H:i:s');
 		$karma = 0;
-
-		$comment_id = createComment(
-			$story_id,
-			$user_id,
-			$description,
-			$date,
-			$karma
-		);
-
+		if(isset($_POST['father']))
+			$comment_id = createComment(
+				$story_id,
+				$user_id,
+				$description,
+				$date,
+				$karma
+			);
+		else
+			$comment_id = createReply(
+				$story_id,
+				$user_id,
+				$description,
+				$date,
+				$karma,
+				$father
+			);
 		die(header('Location: ../pages/story.php?id='.$story_id));
 	}
 
