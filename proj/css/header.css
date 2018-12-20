@@ -26,8 +26,9 @@
   li a:hover {
     background-color: #111111;
   }
+  
   .username:hover {
-    background-color: #333333;
+    background-color: unset;
   }
   .profile-in{
     float: right;

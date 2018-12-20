@@ -81,12 +81,6 @@ footer p{
 }
 
 /*all pages*/
-footer select{
-    background-color: transparent;
-    border: none;
-    font-weight: bold;
-    font-size: 1.1em;
-}
 
 textarea{
     resize:none;
