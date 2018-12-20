@@ -26,16 +26,8 @@
 					<div class="arrow-up"></div>
 				</a>
 			
-				<div id = 'karma'>
-
-					<?php
-						if (is_null($story['karma'])){
-							echo '0';
-						}
-						else {
-							echo $story['karma']; 
-						}
-					?>
+				<div class="karma">
+					<?php echo( is_null($story['karma']) ? '0' : $story['karma'] ); ?>
 				</div>
 				
 				<a href="#story-holder-<?php echo $story['id'] ?>" onclick="downvoteStory('<?php echo $story["id"] ?>')" class="vote downvote <?php echo ( isset($currentUser) && hasUserAlreadyDownvotedStory($currentUser['id'], $story['id']) ? 'voted' : '' ) ?>">

@@ -13,7 +13,10 @@
 
 	$story_id = $_GET['id'];
 	$story = getStory($story_id);
+	
 	$comments = getAllComments($story_id);
+
+	// var_dump($comments);die;
 
 	include_once('../templates/header.php');
 

@@ -10,7 +10,6 @@
 
 		$user_id = $user['id'];
 		$comment_id = trim(strip_tags($_GET['id']));
-		$story_id = trim(strip_tags($_GET['story_id']));
 		$date = date('Y-m-d H:i:s');
 
 		$userAlreadyDownvoted = hasUserAlreadyDownvotedComment($user_id, $comment_id);

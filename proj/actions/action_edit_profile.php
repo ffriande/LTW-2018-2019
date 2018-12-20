@@ -5,7 +5,6 @@
 		
 		include_once('../database/user.php');
 
-		$username = trim(strip_tags($_POST['username']));
 		$password = trim(strip_tags($_POST['password']));
 		$passwordConfirm = trim(strip_tags($_POST['passwordConfirm']));
 
@@ -23,20 +22,19 @@
 			$_SESSION['messages'][] = array('type' => 'error', 'content' => 'Password confirmation must be equal to password!');
 			$fail=1;
 		}
-		if($fail==1)		
-			die(header('Location: ../pages/profile.php'));
+		// if($fail==1)		
+		// 	die(header('Location: ../pages/profile.php'));
 			
-		try {
+		// try {
 			editCurrentUser(
-				$username, 
 				$password
 			);
 			die(header('Location: ../actions/action_logout.php'));  
-		} catch (PDOException $e) {
-			die($e->getMessage());
-			$_SESSION['messages'][] = array('type' => 'error', 'content' => 'Failed to signup!');
-			die(header('Location: ../pages/profile.php'));
-		}
+		// } catch (PDOException $e) {
+		// 	die($e->getMessage());
+		// 	$_SESSION['messages'][] = array('type' => 'error', 'content' => 'Failed to signup!');
+		// 	die(header('Location: ../pages/profile.php'));
+		// }
 
 
 	}

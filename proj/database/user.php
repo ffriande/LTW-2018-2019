@@ -18,7 +18,6 @@
   }
 
   function editCurrentUser(
-        $username, 
         $password
       )
   {
@@ -27,9 +26,9 @@
     $options = ['cost' => 12];
     $hash = password_hash($password, PASSWORD_DEFAULT, $options);
     
-    $stmt=$conn->prepare('UPDATE user SET username=?,password=? WHERE username=?');
+    $stmt=$conn->prepare('UPDATE user SET password=? WHERE username=?');
 
-    $result = $stmt->execute(array($username,$hash,$_SESSION['username']));
+    $result = $stmt->execute(array($hash,$_SESSION['username']));
 
     return $result;
   }

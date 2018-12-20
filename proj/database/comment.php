@@ -4,7 +4,16 @@
   function getAllComments($story_id) {
     global $conn;
     
-    $stmt = $conn->prepare('SELECT * FROM comment WHERE story_id = ? ORDER BY `date` Desc');
+    $stmt = $conn->prepare('
+        SELECT 
+        comment.*, 
+        user.username as usrname  
+        FROM comment 
+        left join user on comment.user_id=user.id 
+        WHERE comment.story_id = ? AND father IS NULL
+
+        ORDER BY `date` Desc
+      ');
     $stmt->execute(array($story_id));
     return $stmt->fetchAll();
   }
@@ -105,7 +114,20 @@
   function findReplies($father){
     global $conn;
     
-    $stmt = $conn->prepare('SELECT * FROM comment WHERE father = ? ORDER BY `date` Desc');
+    $stmt = $conn->prepare('
+      SELECT 
+      comment.*, 
+      user.username as usrname  
+      FROM comment 
+      left join user on comment.user_id=user.id 
+      WHERE comment.father = ? 
+      ORDER BY `date` Desc
+    ');
+
+
+
+
+
     $stmt->execute(array($father));
     return $stmt->fetchAll();
   }

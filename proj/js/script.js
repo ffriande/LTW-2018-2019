@@ -11,9 +11,15 @@ function sortChanged(event) {
     
 }
 
+function showReplyForm(id) {
+
+	var element = document.getElementById(id);
+	element.style.display = "block";
+}
+
 function removeStoryKarma(story_id, adder = 1) {
 
-	var element = document.querySelector("#story-holder-"+story_id+" #karma");
+	var element = document.querySelector("#story-holder-"+story_id+" .karma");
 
 	element.innerHTML = parseInt(element.innerHTML) - adder;
 
@@ -21,14 +27,14 @@ function removeStoryKarma(story_id, adder = 1) {
 
 function addStoryKarma(story_id, adder = 1) {
 
-	var element = document.querySelector("#story-holder-"+story_id+" #karma");
+	var element = document.querySelector("#story-holder-"+story_id+" .karma");
 
 	element.innerHTML = parseInt(element.innerHTML) + adder;
 }
 
 function removeCommentKarma(comment_id, adder = 1) {
 
-	var element = document.querySelector("#comment-holder-"+comment_id+" #karma");
+	var element = document.querySelector("#comment-holder-"+comment_id+" .karma");
 
 	element.innerHTML = parseInt(element.innerHTML) - adder;
 
@@ -36,7 +42,7 @@ function removeCommentKarma(comment_id, adder = 1) {
 
 function addCommentKarma(comment_id, adder = 1) {
 
-	var element = document.querySelector("#comment-holder-"+comment_id+" #karma");
+	var element = document.querySelector("#comment-holder-"+comment_id+" .karma");
 
 	element.innerHTML = parseInt(element.innerHTML) + adder;
 }
@@ -53,9 +59,9 @@ function upvoteStory(story_id) {
 	    if (xmlhttp.readyState == XMLHttpRequest.DONE) {
 	       if (xmlhttp.status == 200) {
 
-				var element = document.querySelector("#story-holder-"+story_id+" .downvote");
+				var element = document.querySelector("#story-holder-"+story_id+" .downvote.voted");
 				if(element) {
-					adder = 2
+					adder = 2;
 					element.classList.remove("voted");
 				}
 
@@ -100,8 +106,11 @@ function downvoteStory(story_id) {
 	    if (xmlhttp.readyState == XMLHttpRequest.DONE) {
 	       	if (xmlhttp.status == 200) {
 
-				var element = document.querySelector("#story-holder-"+story_id+" .upvote");
-				element.classList.remove("voted");
+				var element = document.querySelector("#story-holder-"+story_id+" .upvote.voted");
+				if(element) {
+					adder = 2;
+					element.classList.remove("voted");
+				}
 
 				var elementVoted = document.querySelector("#story-holder-"+story_id+" .downvote.voted");
 				if(elementVoted) {
@@ -143,8 +152,9 @@ function upvoteComment(comment_id) {
 	    if (xmlhttp.readyState == XMLHttpRequest.DONE) {   // XMLHttpRequest.DONE == 4
 	       	if (xmlhttp.status == 200) {
 
-		       	var element = document.querySelector("#comment-holder-"+comment_id+" .downvote");
+		       	var element = document.querySelector("#comment-holder-"+comment_id+" .downvote.voted");
 		       	if(element) {
+		       		adder = 2;
 		       		element.classList.remove("voted");
 		       	}
 
@@ -184,11 +194,17 @@ function downvoteComment(comment_id) {
 	var xmlhttp = new XMLHttpRequest();
 
 	xmlhttp.onreadystatechange = function() {
-	    if (xmlhttp.readyState == XMLHttpRequest.DONE) {   // XMLHttpRequest.DONE == 4
-	       if (xmlhttp.status == 200) {
 
-				var element = document.querySelector("#comment-holder-"+comment_id+" .upvote");
-				element.classList.remove("voted");
+		var adder = 1;
+
+	    if (xmlhttp.readyState == XMLHttpRequest.DONE) {   // XMLHttpRequest.DONE == 4
+	       	if (xmlhttp.status == 200) {
+
+				var element = document.querySelector("#comment-holder-"+comment_id+" .upvote.voted");
+				if(element) {
+					adder = 2;
+					element.classList.remove("voted");
+				}
 
 				var elementVoted = document.querySelector("#comment-holder-"+comment_id+" .downvote.voted");
 				if(elementVoted) {
@@ -218,5 +234,6 @@ function downvoteComment(comment_id) {
 	
 	xmlhttp.send();
 }
+
 
 
