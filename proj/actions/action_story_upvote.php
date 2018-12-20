@@ -15,12 +15,12 @@
 		
 		$userAlreadyUpvoted = hasUserAlreadyUpvotedStory($user_id, $story_id);
 		
-		if ($userAlreadyUpvoted) {
-			$result = deleteUserStoryVote(
-				$user_id,
-				$story_id
-			);
-		}
+		
+		$result = deleteUserStoryVote(
+			$user_id,
+			$story_id
+		);
+		
 		
 		if(!$userAlreadyUpvoted) {
 			$vote_id = upvoteStory(

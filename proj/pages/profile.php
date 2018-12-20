@@ -1,22 +1,30 @@
 <?php
 
-include_once('../config/init.php');
+	include_once('../config/init.php');
+	include_once('../templates/header.php');
 
-include_once('../templates/header.php');    
+	if(isset($_SESSION['username'])) {
 
-include_once('../database/profile_db.php');
+		include_once('../database/profile.php');
 
-$usern=$_GET['profile'];
+		$usern = isset($_GET['profile']) ? $_GET['profile'] : $_SESSION['username'];
 
-$user_points=getUserPoints($usern);
+		$storiesKarma = getVotesStory($usern);
 
-$user_info=getUserInfo($usern);
+		$commentsKarma = getVotesComment($usern);
 
-$stories=getUserStories($usern); 
+		$karma = $storiesKarma + $commentsKarma;
 
-$comments=getUserComments($usern); 
+		$user_info = getUserInfo($usern);
 
-include_once('../templates/profile_template.php');
+		$stories = getUserStories($usern); 
 
-include_once('../templates/footer.php');
+		$comments = getUserComments($usern); 
+
+
+		include_once('../templates/profile_template.php');
+		
+	}
+
+	include_once('../templates/footer.php');
 ?>

@@ -8,14 +8,14 @@
     </section>-->
 
     <section id="login" >
-    <span class="register-date">User points: <?php echo $user_points; ?>  </span>
+    <span class="register-date">User points: <?php echo $karma; ?>  </span>
 
         <h2>Profile</h2>
         <?php if(isset($_SESSION['username']))?>
         <?php if($_SESSION['username']== $usern) {?>
         <form action="../actions/action_edit_profile.php" method="POST">
            
-            <input type="text" name="username" placeholder="username" id="username" value="<?php echo $_SESSION['username']; ?>" required="required">
+            <input type="text" name="username" placeholder="username" id="username" value="<?php echo $_SESSION['username']; ?>" required="required" readonly>
             <span class="pass-check usercheck" aria-hidden="true"></span><i class="pass-times usernotcheck" aria-hidden="true"></i>
             <br>
             <ul class="checkuser">
@@ -33,7 +33,7 @@
                 </ul>
             </div>
                  
-            <input type="password" name="passwordConfirm" placeholder="confirm new password" id="password">
+            <input type="password" name="passwordConfirm" placeholder="confirm new password" id="passwordConfirm">
             <span class="pass-check confirm passcheck" aria-hidden="true"></span><i class="pass-times confirm passnotcheck" aria-hidden="true"></i><br>
             <div class="checkpassword">
             </div>
@@ -81,8 +81,6 @@
             <span>
               <?php echo $comment['karma']; ?>
             </span>
-            <a style="float: right;" href="../actions/action_comment_upvote.php?id=<?php echo $comment['id']; ?>&story_id=<?php echo $story['id']; ?>" class="upvote">&uparrow;</a>
-            <a style="float: right;" href="../actions/action_comment_downvote.php?id=<?php echo $comment['id']; ?>&story_id=<?php echo $story['id']; ?>" class="downvote">&downarrow;</a>
           </h3>
         </header>
 

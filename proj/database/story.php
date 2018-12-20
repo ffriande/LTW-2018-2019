@@ -29,7 +29,17 @@
 	function getStory($story_id) {
 		global $conn;
 
-		$stmt = $conn->prepare('SELECT * FROM story WHERE id = ?');
+		$stmt = $conn->prepare('
+			SELECT 
+			story.*, 
+			COUNT(comment.story_id) as nrComm, 
+			user.username as usrname 
+			FROM story 
+			left join comment on story.id=comment.story_id 
+			left join user on story.user_id=user.id 
+			WHERE story.id = ?
+		');
+
 		$stmt->execute(array($story_id));
 		return $stmt->fetch();
 	}
