@@ -116,10 +116,11 @@
             </span>
 
             <span class="reply">
-            <form action="../actions/action_add_comment.php" method="post">
+            <form action="../actions/action_add_reply.php" method="post">
               <label>Comment:
                 <input type="text" name="comment" >
               </label>
+              <input type="hidden" name="story" value="<?php echo $story['id'] ?>">
               <input type="hidden" name="father" value="<?php echo $comment['id'] ?>">
               <input type="submit">
             </form>
