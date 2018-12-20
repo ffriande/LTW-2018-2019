@@ -193,6 +193,7 @@
 #comment {
     margin: 0.1rem;
     width: 50%;
+    height: 10rem;
 }
 
 input[type="submit"] {
@@ -335,4 +336,34 @@ select {
 #profile-stories{
     display: flex;
     flex-direction: column;
+}
+
+
+/*///////////
+/ Add_Story /
+///////////*/
+
+#create-story {
+    margin: 5em;
+    width: 100%;
+}
+
+#create-story > form > .form-group {
+    margin-bottom: 1rem;
+    width: 80%;
+}
+
+#create-story > form > .form-group > label {
+    display: block;
+}
+
+
+#create-story > form > .form-group > label > input {
+    width:100%;
+    margin-top: 1em;
+}
+
+#create-story textarea {
+    width: 100%;
+    margin-top: 1em;
 }

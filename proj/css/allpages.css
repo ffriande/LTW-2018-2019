@@ -88,5 +88,7 @@ footer select{
     font-size: 1.1em;
 }
 
-
-
+textarea{
+    resize:none;
+    font-family: 'Montserrat', sans-serif;
+}
