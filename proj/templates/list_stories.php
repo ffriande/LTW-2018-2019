@@ -27,7 +27,15 @@
 				</a>
 			
 				<div id = 'karma'>
-					<?php echo $story['karma']; ?>
+
+					<?php
+						if (is_null($story['karma'])){
+							echo '0';
+						}
+						else {
+							echo $story['karma']; 
+						}
+					?>
 				</div>
 				
 				<a href="#story-holder-<?php echo $story['id'] ?>" onclick="downvoteStory('<?php echo $story["id"] ?>')" class="vote downvote <?php echo ( isset($currentUser) && hasUserAlreadyDownvotedStory($currentUser['id'], $story['id']) ? 'voted' : '' ) ?>">

@@ -92,7 +92,6 @@
 	function hasUserAlreadyUpvotedStory($user_id, $story_id)
 	{
 		global $conn;
-
 		$stmt = $conn->prepare('SELECT * FROM voteStory WHERE user_id = ? AND story_id = ? AND up_down = 1');
 		$stmt->execute(array($user_id, $story_id));
 		return $stmt->fetchAll();

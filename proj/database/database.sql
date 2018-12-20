@@ -38,6 +38,7 @@ CREATE TABLE comment (
     description VARCHAR NOT NULL,
     date DATETIME NOT NULL,
     karma INTEGER,
+    father INTEGER,
         FOREIGN KEY (story_id) REFERENCES story(id),
         FOREIGN KEY (user_id) REFERENCES user(id)
 );
@@ -104,7 +105,7 @@ CREATE TRIGGER delete_vote_story AFTER DELETE ON voteStory
 BEGIN
         UPDATE story SET karma = (SELECT SUM(up_down) FROM voteStory WHERE story_id = OLD.story_id)
     WHERE
-        id = NEW.story_id;
+        id = OLD.story_id;
 END;
 
 CREATE TRIGGER delete_vote_comment AFTER DELETE ON voteComment
