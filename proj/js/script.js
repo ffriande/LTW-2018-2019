@@ -11,13 +11,43 @@ function sortChanged(event) {
     
 }
 
+function removeStoryKarma(story_id) {
+
+	var element = document.querySelector("#story-holder-"+story_id+" #karma");
+
+	element.innerHTML = parseInt(element.innerHTML) - 1;
+
+}
+
+function addStoryKarma(story_id) {
+
+	var element = document.querySelector("#story-holder-"+story_id+" #karma");
+
+	element.innerHTML = parseInt(element.innerHTML) + 1;
+}
+
+function removeCommentKarma(comment_id) {
+
+	var element = document.querySelector("#comment-holder-"+comment_id+" #karma");
+
+	element.innerHTML = parseInt(element.innerHTML) - 1;
+
+}
+
+function addCommentKarma(comment_id) {
+
+	var element = document.querySelector("#comment-holder-"+comment_id+" #karma");
+
+	element.innerHTML = parseInt(element.innerHTML) + 1;
+}
+
 
 function upvoteStory(story_id) {
 	
 	var xmlhttp = new XMLHttpRequest();
 
 	xmlhttp.onreadystatechange = function() {
-	    if (xmlhttp.readyState == XMLHttpRequest.DONE) {   // XMLHttpRequest.DONE == 4
+	    if (xmlhttp.readyState == XMLHttpRequest.DONE) {
 	       if (xmlhttp.status == 200) {
 
 				var element = document.querySelector("#story-holder-"+story_id+" .downvote");
@@ -28,10 +58,12 @@ function upvoteStory(story_id) {
 				var elementVoted = document.querySelector("#story-holder-"+story_id+" .upvote.voted");
 				if(elementVoted) {
 
+					removeStoryKarma( story_id );
 					elementVoted.classList.remove("voted");
 
 				} else {
 
+					addStoryKarma( story_id );
 					var elementNotVoted = document.querySelector("#story-holder-"+story_id+" .upvote");
 					elementNotVoted.classList.add("voted");
 
@@ -57,7 +89,7 @@ function downvoteStory(story_id) {
 	var xmlhttp = new XMLHttpRequest();
 
 	xmlhttp.onreadystatechange = function() {
-	    if (xmlhttp.readyState == XMLHttpRequest.DONE) {   // XMLHttpRequest.DONE == 4
+	    if (xmlhttp.readyState == XMLHttpRequest.DONE) {
 	       	if (xmlhttp.status == 200) {
 
 				var element = document.querySelector("#story-holder-"+story_id+" .upvote");
@@ -66,10 +98,12 @@ function downvoteStory(story_id) {
 				var elementVoted = document.querySelector("#story-holder-"+story_id+" .downvote.voted");
 				if(elementVoted) {
 
+					addStoryKarma( story_id );
 					elementVoted.classList.remove("voted");
 
 				} else {
 
+					removeStoryKarma( story_id );
 					var elementNotVoted = document.querySelector("#story-holder-"+story_id+" .downvote");
 					elementNotVoted.classList.add("voted");
 
@@ -96,31 +130,35 @@ function upvoteComment(comment_id) {
 
 	xmlhttp.onreadystatechange = function() {
 	    if (xmlhttp.readyState == XMLHttpRequest.DONE) {   // XMLHttpRequest.DONE == 4
-	       if (xmlhttp.status == 200) {
+	       	if (xmlhttp.status == 200) {
 
-	       	var element = document.querySelector("#comment-holder-"+comment_id+" .downvote");
-	       	if(element) {
-	       		element.classList.remove("voted");
-	       	}
+		       	var element = document.querySelector("#comment-holder-"+comment_id+" .downvote");
+		       	if(element) {
+		       		element.classList.remove("voted");
+		       	}
 
-	       	var elementVoted = document.querySelector("#comment-holder-"+comment_id+" .upvote.voted");
-	       	if(elementVoted) {
+		       	var elementVoted = document.querySelector("#comment-holder-"+comment_id+" .upvote.voted");
+		       	if(elementVoted) {
 
-	       		elementVoted.classList.remove("voted");
+		       		removeCommentKarma( comment_id );
+		       		elementVoted.classList.remove("voted");
 
-	       	} else {
+		       	} else {
 
-	       		var elementNotVoted = document.querySelector("#comment-holder-"+comment_id+" .upvote");
-	       		elementNotVoted.classList.add("voted");
+		       		addCommentKarma( comment_id );
+		       		var elementNotVoted = document.querySelector("#comment-holder-"+comment_id+" .upvote");
+		       		elementNotVoted.classList.add("voted");
 
-	       	}
+		       	}
 
-	       }
-	       else if (xmlhttp.status == 400) {
+	       } else if (xmlhttp.status == 400) {
+
 	          alert('There was an error 400');
-	       }
-	       else {
+
+	       } else {
+
 	           alert('something else other than 200 was returned');
+
 	       }
 	    }
 	};
@@ -144,10 +182,12 @@ function downvoteComment(comment_id) {
 				var elementVoted = document.querySelector("#comment-holder-"+comment_id+" .downvote.voted");
 				if(elementVoted) {
 
+					addCommentKarma( comment_id );
 					elementVoted.classList.remove("voted");
 
 				} else {
 
+					removeCommentKarma( comment_id );
 					var elementNotVoted = document.querySelector("#comment-holder-"+comment_id+" .downvote");
 					elementNotVoted.classList.add("voted");
 
