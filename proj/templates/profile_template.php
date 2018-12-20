@@ -1,15 +1,11 @@
 <section id="core" >
-    <section id="app-promo">
+    <!--<section id="app-promo">
     	<img src="../images/sigarrit_full_logo.png" alt="Logo" width="700" height="380">
         <div class="promo-slogans">
             <h1>Your daily feed</h1>
         </div>
         <p>slogan</p>
-    </section>
-
-    <div class="wrapper-divider">
-        <div class="divider"></div>
-    </div>
+    </section>-->
 
     <section id="login" >
     <span class="register-date">User points: <?php echo $user_points; ?>  </span>

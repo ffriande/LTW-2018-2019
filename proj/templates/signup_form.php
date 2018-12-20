@@ -14,10 +14,6 @@
         </div>
         <p>slogan</p>
     </section>
-
-    <div class="wrapper-divider">
-        <div class="divider"></div>
-    </div>
     <section id="login" >
         <h2>Register</h2>
         <form action="../actions/action_register.php" method="POST">
@@ -34,7 +30,6 @@
             </div>
             <input type="submit" value="Sign Up">
             <br>
-
             <div class="checkpassword">
                 <h4>Your password must have:</h4>
                 <ul>
@@ -44,7 +39,6 @@
                     <li class="4-rule">At least 1 special character <span class="pass-check" ></span></li>
                 </ul>
             </div>
-                 
 
         </form>
         </section>

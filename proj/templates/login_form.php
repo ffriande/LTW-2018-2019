@@ -7,10 +7,6 @@
         <p>slogan</p>
     </section>
 
-    <div class="wrapper-divider">
-        <div class="divider"></div>
-    </div>
-
     <section id="login" >
         <h2>Log In</h2>
         <form action="../actions/action_login.php" method="POST">
