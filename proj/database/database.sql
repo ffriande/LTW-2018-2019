@@ -99,3 +99,24 @@ BEGIN
     WHERE  
         channel_id = NEW.channel_id;
 END;
+
+CREATE TRIGGER delete_vote_story AFTER DELETE ON voteStory
+BEGIN
+        UPDATE story SET karma = (SELECT SUM(up_down) FROM voteStory WHERE story_id = OLD.story_id)
+    WHERE
+        id = NEW.story_id;
+END;
+
+CREATE TRIGGER delete_vote_comment AFTER DELETE ON voteComment
+BEGIN
+        UPDATE comment SET karma  = (SELECT SUM(up_down) FROM voteComment WHERE comment_id = OLD.comment_id)
+    WHERE
+        id = OLD.comment_id;
+END;
+
+CREATE TRIGGER delete_subscription AFTER DELETE ON subscription
+BEGIN
+        UPDATE channel SET subscriptions = (SELECT COUNT (*) FROM subscription)
+    WHERE  
+        channel_id = OLD.channel_id;
+END;
