@@ -1,4 +1,3 @@
-
 <section id="core" >
     <section id="app-promo">
     	<img src="../images/sigarrit_full_logo.png" alt="Logo" width="700" height="380">

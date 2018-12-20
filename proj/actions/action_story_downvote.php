@@ -12,13 +12,24 @@
 		$story_id = trim(strip_tags($_GET['id']));
 		$date = date('Y-m-d H:i:s');
 
-		$vote_id = downvoteStory(
-		    $user_id,
-		    $story_id,
-		    $date
-		 );
+		$userAlreadyDownvoted = hasUserAlreadyDownvotedStory($user_id, $story_id);
+		
+		$result = deleteUserStoryVote(
+			$user_id,
+			$story_id
+		);
 
-		die(header('Location: ../pages/story.php?id='.$story_id));
+		if(!$userAlreadyDownvoted) {
+
+			$vote_id = downvoteStory(
+			    $user_id,
+			    $story_id,
+			    $date
+			 );
+		}
+
+
+		die();
 	}
 
 	die(header('Location: ../index.php'));

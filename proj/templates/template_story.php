@@ -13,19 +13,23 @@
 
   <div id="story-content">
 
-    <article id='story-header'>
+    <article id="story-holder-<?php echo $story['id'] ?>" class='story-header'>
 
       <div id = 'vote'>
-        <a  href="../actions/action_story_upvote.php?id=<?php echo $story['id']; ?>" class="upvote">
+
+        <a href="#story-holder-<?php echo $story['id'] ?>" onclick="upvoteStory('<?php echo $story["id"] ?>')" class="vote upvote <?php echo ( isset($currentUser) && hasUserAlreadyUpvotedStory($currentUser['id'], $story['id']) ? 'voted' : '' ) ?>">
           <div class="arrow-up"></div>
         </a>
-        <div id='karma'>
+        
+        <div id = 'karma'>
           <?php echo $story['karma']; ?>
         </div>
-        <a  href="../actions/action_story_downvote.php?id=<?php echo $story['id']; ?>" class="downvote">
+        
+        <a href="#story-holder-<?php echo $story['id'] ?>" onclick="downvoteStory('<?php echo $story["id"] ?>')" class="vote downvote <?php echo ( isset($currentUser) && hasUserAlreadyDownvotedStory($currentUser['id'], $story['id']) ? 'voted' : '' ) ?>">
           <div class="arrow-down"></div>
         </a>
       </div>
+
       <div id = 'listStory'>
 				<div class = 'story-title'>
           <?php echo $story['title']; ?>
@@ -68,12 +72,8 @@
           </form>
       </div>
       
-  </div>
-    </article>
-
-    
-
-    
+    </div>
+  </article>
   </div>
 
   
@@ -81,15 +81,17 @@
 
   <div id="comments" >
     <?php foreach ($comments as $key => $comment) { ?>
-      <article id="story">
+      <article id="comment-holder-<?php echo $comment['id'] ?>" class="story">
         <div id = 'vote'>
-          <a href="../actions/action_comment_upvote.php?id=<?php echo $comment['id']; ?>&story_id=<?php echo $story['id']; ?>" class="upvote">
+          <a href="#comment-holder-<?php echo $comment['id'] ?>" onclick="upvoteComment('<?php echo $comment["id"] ?>')" class="vote upvote <?php echo ( isset($currentUser) && hasUserAlreadyUpvotedComment($currentUser['id'], $comment['id']) ? 'voted' : '' ) ?>">
             <div class="arrow-up"></div>
           </a>
-          <div id='karma'>
+          
+          <div id = 'karma'>
             <?php echo $comment['karma']; ?>
           </div>
-          <a href="../actions/action_comment_downvote.php?id=<?php echo $comment['id']; ?>&story_id=<?php echo $story['id']; ?>" class="downvote">
+          
+          <a href="#comment-holder-<?php echo $comment['id'] ?>" onclick="downvoteComment('<?php echo $comment["id"] ?>')" class="vote downvote <?php echo ( isset($currentUser) && hasUserAlreadyDownvotedComment($currentUser['id'], $comment['id']) ? 'voted' : '' ) ?>">
             <div class="arrow-down"></div>
           </a>
         </div>

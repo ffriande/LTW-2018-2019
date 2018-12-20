@@ -163,7 +163,7 @@
     display: block;
 }
 
-#story-header{
+.story-header{
     display:flex;
 }
 
@@ -173,7 +173,7 @@
     margin: 1rem;
 }
 
-#story-header > #listStory > .listStory-description {
+.story-header > #listStory > .listStory-description {
     margin-top : 1em;
 }
 
@@ -235,7 +235,7 @@ select {
     padding: 0.5em;
 }
 
-#story {
+.story, #story {
     display:flex;
     align-items: center;
     padding-bottom: 10px;
@@ -263,7 +263,7 @@ select {
     transform: rotate(-45deg);
 }
 
-.arrow-up:hover  {
+.voted .arrow-up, .arrow-up:hover  {
     color: green;
 }
 
@@ -282,7 +282,7 @@ select {
     transform: rotate(135deg);
 }
 
-.arrow-down:hover {
+.voted .arrow-down, .arrow-down:hover {
     color: red;
 }
 

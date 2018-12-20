@@ -56,4 +56,31 @@
 
     return $conn->lastInsertId();
   }
+
+  function deleteUserCommentVote($user_id, $comment_id)
+  {
+    global $conn;
+
+    $stmt = $conn->prepare('DELETE FROM voteComment WHERE user_id = ? AND comment_id = ?');
+    $stmt->execute(array($user_id, $comment_id));
+    return $stmt->fetch();
+  }
+
+  function hasUserAlreadyDownvotedComment($user_id, $comment_id)
+  {
+    global $conn;
+
+    $stmt = $conn->prepare('SELECT * FROM voteComment WHERE user_id = ? AND comment_id = ? AND up_down = -1');
+    $stmt->execute(array($user_id, $comment_id));
+    return $stmt->fetchAll();
+  }
+
+  function hasUserAlreadyUpvotedComment($user_id, $comment_id)
+  {
+    global $conn;
+
+    $stmt = $conn->prepare('SELECT * FROM voteComment WHERE user_id = ? AND comment_id = ? AND up_down = 1');
+    $stmt->execute(array($user_id, $comment_id));
+    return $stmt->fetchAll();
+  }
 ?>

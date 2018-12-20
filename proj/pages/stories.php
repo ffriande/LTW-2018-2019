@@ -5,6 +5,15 @@
 
 	include_once('../database/story.php');
 
+	if(isset($_SESSION['username'])) {
+
+		include_once('../database/user.php');
+
+		$currentUser = getCurrentUser();
+		
+	}
+
+
 	if(isset($_GET['sort'])) {
 
 		$stories = getAllStories($_GET['sort']);

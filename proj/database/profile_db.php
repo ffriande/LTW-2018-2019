@@ -31,16 +31,16 @@ function getUserPoints($username){
      
    $stmt = $conn->prepare('SELECT story.id FROM story WHERE `user_id` = (SELECT id FROM user WHERE username=?)');
    $stmt->execute(array($username));
-   $stories = $stmt->fetch();
+   $stories = $stmt->fetchAll();
    $stmt = $conn->prepare('SELECT comment.id FROM comment WHERE `user_id` = (SELECT id FROM user WHERE username=?)');
    $stmt->execute(array($username));
-   $comments = $stmt->fetch();
+   $comments = $stmt->fetchAll();
    $points = 0;
    
-   foreach($stories as $key)
-       $points += getVotesPost($key);
-    foreach($comments as $key)
-       $points += getVotesComment($key);
+   foreach($stories as $key => $story)
+       $points += getVotesPost($story['id']);
+    foreach($comments as $key => $comment)
+       $points += getVotesComment($comment['id']);
    return $points;  
 }
 

@@ -1,4 +1,3 @@
-
 <section id="stories">
 
 	<form action="../actions/action_sort.php" method="POST" id='sort'>
@@ -19,11 +18,11 @@
     </div>			
 	<?php foreach ($stories as $key => $story) { ?>
 
-		<article id = 'story'>
-
+		<article id = 'story-holder-<?php echo $story['id'] ?>' class="story">
+				
 			<div id = 'vote'>
 				
-				<a href="../actions/action_story_upvote.php?id=<?php echo $story['id']; ?>" class="upvote">
+				<a href="#story-holder-<?php echo $story['id'] ?>" onclick="upvoteStory('<?php echo $story["id"] ?>')" class="vote upvote <?php echo ( isset($currentUser) && hasUserAlreadyUpvotedStory($currentUser['id'], $story['id']) ? 'voted' : '' ) ?>">
 					<div class="arrow-up"></div>
 				</a>
 			
@@ -31,11 +30,12 @@
 					<?php echo $story['karma']; ?>
 				</div>
 				
-				<a href="../actions/action_story_downvote.php?id=<?php echo $story['id']; ?>" class="downvote">
+				<a href="#story-holder-<?php echo $story['id'] ?>" onclick="downvoteStory('<?php echo $story["id"] ?>')" class="vote downvote <?php echo ( isset($currentUser) && hasUserAlreadyDownvotedStory($currentUser['id'], $story['id']) ? 'voted' : '' ) ?>">
 					<div class="arrow-down"></div>
 				</a>
 			
 			</div>
+
 			<div id = 'listStory'>
 				<div class = 'listStory-title'>
 						<a href="../pages/story.php?id=<?php echo $story['id']; ?>">
@@ -63,6 +63,7 @@
 					<a class="comments" href="../pages/story.php?id=<?php echo $story['id']; ?>"><?php echo $story['nrComm']; ?> comments</a>
 				</div>
 			</div>
+
 		</article>
 		<?php } ?>
 </section>

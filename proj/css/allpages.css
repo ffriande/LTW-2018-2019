@@ -27,8 +27,8 @@ h4{
 
 /*all pages*/
 body{
-    width: 1220px;
-    height: 100vh; 
+    max-width: 1220px;
+    min-height: 100vh; 
     margin: 0 auto;
     font-family: 'Montserrat', sans-serif;
     -webkit-font-smoothing: antialiased; 

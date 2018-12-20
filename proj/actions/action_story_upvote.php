@@ -12,16 +12,26 @@
 		$story_id = trim(strip_tags($_GET['id']));
 		$date = date('Y-m-d H:i:s');
 
-		$vote_id = upvoteStory(
-		    $user_id,
-		    $story_id,
-		    $date
-		 );
+		$userAlreadyUpvoted = hasUserAlreadyUpvotedStory($user_id, $story_id);
 
-		die(header('Location: ../pages/story.php?id='.$story_id));
+		$result = deleteUserStoryVote(
+			$user_id,
+			$story_id
+		);
+
+		if(!$userAlreadyUpvoted) {
+
+			$vote_id = upvoteStory(
+				$user_id,
+				$story_id,
+				$date
+			);
+
+		}
+
+		die();
 	}
 
 	die(header('Location: ../index.php'));
-
 	
 ?>

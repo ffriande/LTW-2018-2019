@@ -13,15 +13,24 @@
 		$story_id = trim(strip_tags($_GET['story_id']));
 		$date = date('Y-m-d H:i:s');
 
-		$vote_id = upvoteComment(
-		    $user_id,
-		    $comment_id,
-		    $date
-		 );
+		$userAlreadyUpvoted = hasUserAlreadyUpvotedComment($user_id, $comment_id);
 
-		
+		$result = deleteUserCommentVote(
+			$user_id,
+			$comment_id
+		);
 
-		die(header('Location: ../pages/story.php?id='.$story_id));
+		if(!$userAlreadyUpvoted) {
+
+			$vote_id = upvoteComment(
+				$user_id,
+				$comment_id,
+				$date
+			);
+
+		}
+
+		die();
 	}
 
 	die(header('Location: ../index.php'));
