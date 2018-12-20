@@ -14,7 +14,7 @@ DROP TRIGGER IF EXISTS create_subscription;
 
 CREATE TABLE user (
   id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-  username VARCHAR NOT NULL,
+  username VARCHAR NOT NULL UNIQUE,
   register_date DATETIME NOT NULL,  
   password VARCHAR NOT NULL
 );
