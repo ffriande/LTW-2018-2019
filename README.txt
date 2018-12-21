@@ -1,3 +1,3 @@
 Grupo 17
-
-José Manuel Faria Azevedo - up201506648
+Francisco Ademar Freitas Friande - up201508213
+JosÃ© Manuel Faria Azevedo - up201506648
