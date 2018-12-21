@@ -47,19 +47,20 @@
         <?php foreach ($stories as $key => $story) { ?>
             <div id = 'listStory' class="story">
 				<div class = 'listStory-title'>
-						<a href="../pages/story.php?id=<?php echo $story['id']; ?>">
-							<?php echo $story['title']; ?>
-						</a>
+					<a href="../pages/story.php?id=<?php echo $story['id']; ?>">
+						<?php echo $story['title']; ?>
+					</a>
 				</div>
 
 				<div class="listStory-description">
 					<?php echo $story['description']; ?>
-				</div>
+                </div>
 
-				<div class = 'listStory-footer'>
-					<span class="date">
-						<?php echo $story['date']; ?>
-					</span>
+                <div class = 'listStory-footer'>
+                    <span class="date">
+                        <?php echo $story['date']; ?>
+                    </span>
+
 				</div>
 			</div>
             <?php } ?>
@@ -77,6 +78,7 @@
                 <span class="date">
                     <?php echo $comment['date']; ?>
                 </span>
+
             </div>
         </div>
     <?php } ?>

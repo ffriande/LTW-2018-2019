@@ -22,7 +22,7 @@
 				
 			<div id = 'vote'>
 				
-				<a href="#story-holder-<?php echo $story['id'] ?>" onclick="upvoteStory('<?php echo $story["id"] ?>')" class="vote upvote <?php echo ( isset($currentUser) && hasUserAlreadyUpvotedStory($currentUser['id'], $story['id']) ? 'voted' : '' ) ?>">
+				<a href="javascript:void(0)" onclick="upvoteStory('<?php echo $story["id"] ?>')" class="vote upvote <?php echo ( isset($currentUser) && hasUserAlreadyUpvotedStory($currentUser['id'], $story['id']) ? 'voted' : '' ) ?>">
 					<div class="arrow-up"></div>
 				</a>
 			
@@ -30,7 +30,7 @@
 					<?php echo( is_null($story['karma']) ? '0' : $story['karma'] ); ?>
 				</div>
 				
-				<a href="#story-holder-<?php echo $story['id'] ?>" onclick="downvoteStory('<?php echo $story["id"] ?>')" class="vote downvote <?php echo ( isset($currentUser) && hasUserAlreadyDownvotedStory($currentUser['id'], $story['id']) ? 'voted' : '' ) ?>">
+				<a href="javascript:void(0)" onclick="downvoteStory('<?php echo $story["id"] ?>')" class="vote downvote <?php echo ( isset($currentUser) && hasUserAlreadyDownvotedStory($currentUser['id'], $story['id']) ? 'voted' : '' ) ?>">
 					<div class="arrow-down"></div>
 				</a>
 			
