@@ -16,8 +16,6 @@
 	
 	$comments = getAllComments($story_id);
 
-	// var_dump($comments);die;
-
 	include_once('../templates/header.php');
 
 	include_once('../templates/template_story.php');

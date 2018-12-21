@@ -10,6 +10,9 @@
 
 		$_SESSION['username'] = $username;
 
+
+		$_SESSION['messages'][] = array('type' => 'success', 'content' => 'Logged in!');
+
 		die(header('Location: ../pages/stories.php'));
 		
 	} else {

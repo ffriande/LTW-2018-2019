@@ -90,7 +90,7 @@ function upvoteStory(story_id) {
 	    }
 	};
 
-	xmlhttp.open("GET", "../actions/action_story_upvote.php?id="+story_id, true);
+	xmlhttp.open("GET", "../api/ajax_upvote_story.php?id="+story_id, true);
 
 	xmlhttp.send();
 }
@@ -136,7 +136,7 @@ function downvoteStory(story_id) {
 	    }
 	};
 
-	xmlhttp.open("GET", "../actions/action_story_downvote.php?id="+story_id, true);
+	xmlhttp.open("GET", "../api/ajax_downvote_story.php?id="+story_id, true);
 
 	xmlhttp.send();
 }
@@ -184,7 +184,7 @@ function upvoteComment(comment_id) {
 	    }
 	};
 
-	xmlhttp.open("GET", "../actions/action_comment_upvote.php?id="+comment_id, true);
+	xmlhttp.open("GET", "../api/ajax_upvote_comment.php?id="+comment_id, true);
 
 	xmlhttp.send();
 }
@@ -230,7 +230,7 @@ function downvoteComment(comment_id) {
 	    }
 	};
 
-	xmlhttp.open("GET", "../actions/action_comment_downvote.php?id="+comment_id, true);
+	xmlhttp.open("GET", "../api/ajax_downvote_comment.php?id="+comment_id, true);
 	
 	xmlhttp.send();
 }

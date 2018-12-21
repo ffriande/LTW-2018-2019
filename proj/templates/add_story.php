@@ -11,17 +11,6 @@
 <?php } ?>
 
 <section id="core" >
-	<!--<section id="app-promo">
-		<img src="../images/sigarrit_full_logo.png" alt="Logo" width="700" height="380">
-		<div class="promo-slogans">
-			<h1>Your daily feed</h1>
-		</div>
-		<p>slogan</p>
-	</section>
-
-	<div class="wrapper-divider">
-		<div class="divider"></div>
-	</div>-->
 	
 	<section id="create-story" >
 		<h2>Create Story</h2>

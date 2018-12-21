@@ -21,6 +21,8 @@
 			$date,
 			$karma
 		);
+
+		$_SESSION['messages'][] = array('type' => 'success', 'content' => 'Comment created!');
 		
 		die(header('Location: ../pages/story.php?id='.$story_id));
 	}

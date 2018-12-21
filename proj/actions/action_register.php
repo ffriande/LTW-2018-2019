@@ -21,15 +21,18 @@
 			$_SESSION['messages'][] = array('type' => 'error', 'content' => 'Password confirmation must be equal to password!');
 			$fail=1;
 		}
-		if($fail==1)		
+		if($fail==1)
 			die(header('Location: ../pages/register.php'));
 			
 		try {
 			$date = date('Y-m-d H:i:s');
 			createUser($username, $password, $passwordConfirm, $date);
+
+			$_SESSION['messages'][] = array('type' => 'success', 'content' => 'User created!');
+
 			die(header('Location: ../pages/login.php'));  
 		} catch (PDOException $e) {
-			die($e->getMessage());
+
 			$_SESSION['messages'][] = array('type' => 'error', 'content' => 'Failed to signup!');
 			die(header('Location: ../pages/register.php'));
 		}
