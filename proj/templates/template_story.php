@@ -121,7 +121,7 @@
                 <?php echo $comment['date']; ?>
               </span>
 
-              <span class="reply">
+              <!--<span class="reply">
                 <a href="javascript:void(0)" onclick="showReplyForm('reply-form-<?php echo $comment['id']; ?>')">Reply</a>  
                 <form id="reply-form-<?php echo $comment['id']; ?>" action="../actions/action_add_reply.php" method="post" class="reply-form" style="margin-top:50px;">
                   <label>Comment:
@@ -131,13 +131,21 @@
                   <input type="hidden" name="father" value="<?php echo $comment['id'] ?>">
                   <input type="submit">
                 </form>
+              </span>-->
+              <span class="reply">
+                <a href="javascript:void(0)" onclick="showReplyForm('reply-form-<?php echo $comment['id']; ?>')">Reply</a>  
               </span>
-
             </div>
           </div>
           
         </div>
         <div class="replies-holder">
+                <form id="reply-form-<?php echo $comment['id']; ?>" action="../actions/action_add_reply.php" method="post" class="reply-form" style="margin-top:50px;margin-left: 100px">
+                  <textarea name="comment" required rows="5" placeholder = "Insert your reply here..."></textarea>
+                  <input type="hidden" name="story" value="<?php echo $story['id'] ?>">
+                  <input type="hidden" name="father" value="<?php echo $comment['id'] ?>">
+                  <input type="submit">
+                </form>
           <?php $replies = findReplies($comment['id']);?>
           <?php foreach ($replies as $key => $reply) { ?>
             <article id="comment-holder-<?php echo $reply['id'] ?>" class="reply" style="margin-left: 100px;">

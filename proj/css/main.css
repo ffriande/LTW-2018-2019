@@ -216,6 +216,12 @@ input[type="submit"] {
 }
 
 
+.reply-form > textarea {
+    width: 50%;
+    display: block;
+    margin-bottom: 1em;
+}
+
 
 /*////////////////
 /list_stories.php/
