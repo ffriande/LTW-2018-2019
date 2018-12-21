@@ -1,21 +1,18 @@
-<section id="core" >
-    <!--<section id="app-promo">
-    	<img src="../images/sigarrit_full_logo.png" alt="Logo" width="700" height="380">
-        <div class="promo-slogans">
-            <h1>Your daily feed</h1>
-        </div>
-        <p>slogan</p>
-    </section>-->
-
+<section id="core" class="profile-core">
+    <section class="profile-info">
+        
+            <h2><?php echo $user_info['username']; ?> Profile</h2>
+            <div class="register-date">User points:  <?php echo $karma; ?>  </div>
+            <div class="register-date"> Registration Date: <?php echo $user_info['register_date']; ?>  </div>
+        
+    </section>
     <section id="login" >
-    <span class="register-date">User points: <?php echo $karma; ?>  </span>
-
-        <h2>Profile</h2>
         <?php if(isset($_SESSION['username']))?>
         <?php if($_SESSION['username']== $usern) {?>
+            <h2>Edit Password:</h2>
         <form action="../actions/action_edit_profile.php" method="POST">
            
-            <input type="text" name="username" placeholder="username" id="username" value="<?php echo $_SESSION['username']; ?>" required="required" readonly>
+            <input style="display:none" type="text" name="username" placeholder="username"  id="username" value="<?php echo $_SESSION['username']; ?>" required="required" readonly>
             <span class="pass-check usercheck" aria-hidden="true"></span><i class="pass-times usernotcheck" aria-hidden="true"></i>
             <br>
             <ul class="checkuser">
@@ -42,66 +39,46 @@
         
         <p class="<?php if(isset($_GET['error_msg'])){echo 'error-show';}else{echo 'error-hide';}?>">The <?echo $_GET['error_msg']; ?> entered already exists!<p>
 
-    <?php } ?>
-        
-        
-    </section>
+        <?php } ?>
+        </section>
 </section>
-
-<span class="register-date"> User registered in <?php echo $user_info['register_date']; ?>  </span>
 <section id="profile-stories" >
     <h2>User Stories</h2>
         <?php foreach ($stories as $key => $story) { ?>
-            <article>
-                
-                <footer>
-                
-                <a href="../pages/story.php?id=<?php echo $story['id']; ?>">
-                            <?php echo $story['karma']; ?> - <?php echo $story['title']; ?>
-                     <span class="tags">
-                        <a href="../pages/channel.php?id=<?php echo $story['channel_id']; ?>">
-                            <?php echo $story['channel_id']; ?>
-                        </a>
-                    </span>
-                    
-                    <span class="date">
-                        <?php echo $story['date']; ?>
-                    </span>
-                </footer>
-            </article>
+            <div id = 'listStory' class="story">
+				<div class = 'listStory-title'>
+						<a href="../pages/story.php?id=<?php echo $story['id']; ?>">
+							<?php echo $story['title']; ?>
+						</a>
+				</div>
+
+				<div class="listStory-description">
+					<?php echo $story['description']; ?>
+				</div>
+
+				<div class = 'listStory-footer'>
+					<span class="date">
+						<?php echo $story['date']; ?>
+					</span>
+				</div>
+			</div>
             <?php } ?>
-            </section>
+    </section>
 
  <section id="profile-comments" >
     <h2>User Comments</h2>
     <?php foreach ($comments as $key => $comment) { ?>
-      <article>
-        <header>
-          <h3>
-            <span>
-              <?php echo $comment['karma']; ?>
-            </span>
-          </h3>
-        </header>
+        <div id = 'listStory' class="story">
+            <div class="listStory-description">
+                <?php echo $comment['description']; ?>
+            </div>
 
-        <div class="description">
-          <?php echo $comment['description']; ?>
+            <div class = 'listStory-footer'>
+                <span class="date">
+                    <?php echo $comment['date']; ?>
+                </span>
+            </div>
         </div>
-
-        <footer>
-          <span class="author"><?php echo $comment['user_id']; ?></span>
-          
-          <span class="tags">
-            <a href="../pages/channel.php?id=<?php echo $story['channel_id']; ?>">
-              <?php echo $story['channel_id']; ?>
-            </a>
-          </span>
-          
-          <span class="date">
-            <?php echo $comment['date']; ?>
-          </span>
-        </footer>
-      </article>
     <?php } ?>
-            </section>
+</section>
 
